@@ -2,3 +2,7 @@ C:\Users\Алексей\source\repos\C-Casino\C-Casino\x64\Debug\C-Casino.vcxpro
 C:\Users\Алексей\source\repos\C-Casino\C-Casino\x64\Debug\C-Casino.vcxproj.SuggestedBindingRedirects.cache
 C:\Users\Алексей\source\repos\C-Casino\C-Casino\x64\Debug\CCasino.Login.resources
 C:\Users\Алексей\source\repos\C-Casino\C-Casino\x64\Debug\C-Casino.vcxproj.GenerateResource.cache
+E:\Course project\C-Casino\C-Casino\x64\Debug\C-Casino.vcxproj.AssemblyReference.cache
+E:\Course project\C-Casino\C-Casino\x64\Debug\C-Casino.vcxproj.SuggestedBindingRedirects.cache
+E:\Course project\C-Casino\C-Casino\x64\Debug\CCasino.Login.resources
+E:\Course project\C-Casino\C-Casino\x64\Debug\C-Casino.vcxproj.GenerateResource.cache

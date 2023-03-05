@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Login.cpp" />
+    <ClCompile Include="Sign in.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Login.h">

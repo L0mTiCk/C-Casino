@@ -288,8 +288,14 @@ namespace CCasino {
 	}
 	private: System::Void signInButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (this->confirmPassTextField->Visible) {
-			if (this->passwordTextField->Text != confirmPassTextField->Text)
+			if (this->passwordTextField->Text != confirmPassTextField->Text) {
+				errorPassLable->Text = "Ошибка, пароли должны совпадать";
 				errorPassLable->Visible = true;
+			}
+			else if (passwordTextField->Text->Length < 6 || confirmPassTextField->Text->Length < 6){
+				errorPassLable->Text = "Ошибка, пароль должен быть > 6 символов";
+				errorPassLable->Visible = true;
+			}
 			else
 				errorPassLable->Visible = false;
 		}
