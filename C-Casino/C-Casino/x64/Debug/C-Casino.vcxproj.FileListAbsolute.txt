@@ -1,0 +1,4 @@
+C:\Users\Алексей\source\repos\C-Casino\C-Casino\x64\Debug\C-Casino.vcxproj.AssemblyReference.cache
+C:\Users\Алексей\source\repos\C-Casino\C-Casino\x64\Debug\C-Casino.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\Алексей\source\repos\C-Casino\C-Casino\x64\Debug\CCasino.Login.resources
+C:\Users\Алексей\source\repos\C-Casino\C-Casino\x64\Debug\C-Casino.vcxproj.GenerateResource.cache
