@@ -9,4 +9,5 @@ int main(array<String^>^) {
 	Application::EnableVisualStyles();
 	CCasino::Login form;
 	Application::Run(% form);
+
 }
