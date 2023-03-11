@@ -18,15 +18,21 @@
     <ClCompile Include="Login.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Sign in.cpp">
+    <ClCompile Include="SignIn.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Sign up.cpp">
+    <ClCompile Include="SignUp.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Login.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SignIn.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SignUp.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

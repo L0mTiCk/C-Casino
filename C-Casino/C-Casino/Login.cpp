@@ -2,12 +2,12 @@
 
 using namespace System;
 using namespace System::Windows::Forms;
+using namespace std;
 
 [STAThreadAttribute]
-int main(array<String^>^) {
+int main(cli::array<String^>^) {
 	Application::SetCompatibleTextRenderingDefault(false);
 	Application::EnableVisualStyles();
 	CCasino::Login form;
 	Application::Run(% form);
-
 }

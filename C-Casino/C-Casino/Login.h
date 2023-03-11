@@ -1,4 +1,9 @@
 #pragma once
+#include "SignIn.h"
+#include "SignUp.h"
+#include <msclr/marshal_cppstd.h>
+
+using namespace msclr::interop;
 
 namespace CCasino {
 
@@ -93,9 +98,10 @@ namespace CCasino {
 			// 
 			// signInButton
 			// 
-			this->signInButton->Location = System::Drawing::Point(375, 320);
+			this->signInButton->Location = System::Drawing::Point(500, 394);
+			this->signInButton->Margin = System::Windows::Forms::Padding(4);
 			this->signInButton->Name = L"signInButton";
-			this->signInButton->Size = System::Drawing::Size(106, 30);
+			this->signInButton->Size = System::Drawing::Size(141, 37);
 			this->signInButton->TabIndex = 0;
 			this->signInButton->Text = L"Sign in";
 			this->signInButton->UseVisualStyleBackColor = true;
@@ -106,9 +112,10 @@ namespace CCasino {
 			this->enteringLable->AutoSize = true;
 			this->enteringLable->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->enteringLable->Location = System::Drawing::Point(228, 41);
+			this->enteringLable->Location = System::Drawing::Point(304, 50);
+			this->enteringLable->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->enteringLable->Name = L"enteringLable";
-			this->enteringLable->Size = System::Drawing::Size(451, 24);
+			this->enteringLable->Size = System::Drawing::Size(580, 29);
 			this->enteringLable->TabIndex = 1;
 			this->enteringLable->Text = L"Ввойдите/зарегистрируйтесь для продолжения.";
 			this->enteringLable->Click += gcnew System::EventHandler(this, &Login::label1_Click_1);
@@ -116,27 +123,30 @@ namespace CCasino {
 			// loginLable
 			// 
 			this->loginLable->AutoSize = true;
-			this->loginLable->Location = System::Drawing::Point(100, 135);
+			this->loginLable->Location = System::Drawing::Point(133, 166);
+			this->loginLable->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->loginLable->Name = L"loginLable";
-			this->loginLable->Size = System::Drawing::Size(33, 13);
+			this->loginLable->Size = System::Drawing::Size(40, 16);
 			this->loginLable->TabIndex = 2;
 			this->loginLable->Text = L"Login";
 			// 
 			// passLable
 			// 
 			this->passLable->AutoSize = true;
-			this->passLable->Location = System::Drawing::Point(103, 204);
+			this->passLable->Location = System::Drawing::Point(137, 251);
+			this->passLable->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->passLable->Name = L"passLable";
-			this->passLable->Size = System::Drawing::Size(53, 13);
+			this->passLable->Size = System::Drawing::Size(67, 16);
 			this->passLable->TabIndex = 3;
 			this->passLable->Text = L"Password";
 			// 
 			// loginTextField
 			// 
 			this->loginTextField->ForeColor = System::Drawing::SystemColors::WindowText;
-			this->loginTextField->Location = System::Drawing::Point(103, 167);
+			this->loginTextField->Location = System::Drawing::Point(137, 206);
+			this->loginTextField->Margin = System::Windows::Forms::Padding(4);
 			this->loginTextField->Name = L"loginTextField";
-			this->loginTextField->Size = System::Drawing::Size(175, 20);
+			this->loginTextField->Size = System::Drawing::Size(232, 22);
 			this->loginTextField->TabIndex = 4;
 			this->loginTextField->Text = L"Login";
 			this->loginTextField->TextChanged += gcnew System::EventHandler(this, &Login::loginTextField_TextChanged);
@@ -144,10 +154,11 @@ namespace CCasino {
 			// passwordTextField
 			// 
 			this->passwordTextField->ForeColor = System::Drawing::SystemColors::WindowText;
-			this->passwordTextField->Location = System::Drawing::Point(103, 236);
+			this->passwordTextField->Location = System::Drawing::Point(137, 290);
+			this->passwordTextField->Margin = System::Windows::Forms::Padding(4);
 			this->passwordTextField->Name = L"passwordTextField";
 			this->passwordTextField->PasswordChar = '*';
-			this->passwordTextField->Size = System::Drawing::Size(175, 20);
+			this->passwordTextField->Size = System::Drawing::Size(232, 22);
 			this->passwordTextField->TabIndex = 5;
 			this->passwordTextField->Text = L"Password";
 			this->passwordTextField->TextChanged += gcnew System::EventHandler(this, &Login::passwordTextField_TextChanged);
@@ -155,9 +166,10 @@ namespace CCasino {
 			// registLable
 			// 
 			this->registLable->AutoSize = true;
-			this->registLable->Location = System::Drawing::Point(103, 272);
+			this->registLable->Location = System::Drawing::Point(137, 335);
+			this->registLable->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->registLable->Name = L"registLable";
-			this->registLable->Size = System::Drawing::Size(177, 13);
+			this->registLable->Size = System::Drawing::Size(228, 16);
 			this->registLable->TabIndex = 6;
 			this->registLable->TabStop = true;
 			this->registLable->Text = L"Нет аккаунта\? Зарегистируйтесь";
@@ -166,9 +178,10 @@ namespace CCasino {
 			// confirmPassLable
 			// 
 			this->confirmPassLable->AutoSize = true;
-			this->confirmPassLable->Location = System::Drawing::Point(372, 204);
+			this->confirmPassLable->Location = System::Drawing::Point(496, 251);
+			this->confirmPassLable->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->confirmPassLable->Name = L"confirmPassLable";
-			this->confirmPassLable->Size = System::Drawing::Size(90, 13);
+			this->confirmPassLable->Size = System::Drawing::Size(114, 16);
 			this->confirmPassLable->TabIndex = 7;
 			this->confirmPassLable->Text = L"Confirm password";
 			this->confirmPassLable->Visible = false;
@@ -176,10 +189,11 @@ namespace CCasino {
 			// 
 			// confirmPassTextField
 			// 
-			this->confirmPassTextField->Location = System::Drawing::Point(375, 236);
+			this->confirmPassTextField->Location = System::Drawing::Point(500, 290);
+			this->confirmPassTextField->Margin = System::Windows::Forms::Padding(4);
 			this->confirmPassTextField->Name = L"confirmPassTextField";
 			this->confirmPassTextField->PasswordChar = '*';
-			this->confirmPassTextField->Size = System::Drawing::Size(175, 20);
+			this->confirmPassTextField->Size = System::Drawing::Size(232, 22);
 			this->confirmPassTextField->TabIndex = 8;
 			this->confirmPassTextField->Text = L"Password";
 			this->confirmPassTextField->Visible = false;
@@ -189,10 +203,11 @@ namespace CCasino {
 			// 
 			this->showPass->ErrorImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"showPass.ErrorImage")));
 			this->showPass->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"showPass.Image")));
-			this->showPass->Location = System::Drawing::Point(293, 233);
-			this->showPass->MaximumSize = System::Drawing::Size(24, 24);
+			this->showPass->Location = System::Drawing::Point(391, 287);
+			this->showPass->Margin = System::Windows::Forms::Padding(4);
+			this->showPass->MaximumSize = System::Drawing::Size(32, 30);
 			this->showPass->Name = L"showPass";
-			this->showPass->Size = System::Drawing::Size(24, 24);
+			this->showPass->Size = System::Drawing::Size(32, 30);
 			this->showPass->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->showPass->TabIndex = 9;
 			this->showPass->TabStop = false;
@@ -201,19 +216,22 @@ namespace CCasino {
 			// errorPassLable
 			// 
 			this->errorPassLable->AutoSize = true;
+			this->errorPassLable->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->errorPassLable->ForeColor = System::Drawing::Color::Red;
-			this->errorPassLable->Location = System::Drawing::Point(592, 239);
+			this->errorPassLable->Location = System::Drawing::Point(496, 330);
+			this->errorPassLable->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->errorPassLable->Name = L"errorPassLable";
-			this->errorPassLable->Size = System::Drawing::Size(188, 13);
+			this->errorPassLable->Size = System::Drawing::Size(343, 22);
 			this->errorPassLable->TabIndex = 10;
 			this->errorPassLable->Text = L"Ошибка, пароли должны совпадать";
 			this->errorPassLable->Visible = false;
 			// 
 			// Login
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(879, 417);
+			this->ClientSize = System::Drawing::Size(1172, 513);
 			this->Controls->Add(this->errorPassLable);
 			this->Controls->Add(this->showPass);
 			this->Controls->Add(this->confirmPassTextField);
@@ -225,6 +243,7 @@ namespace CCasino {
 			this->Controls->Add(this->loginLable);
 			this->Controls->Add(this->enteringLable);
 			this->Controls->Add(this->signInButton);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"Login";
 			this->Text = L"Login";
 			this->Load += gcnew System::EventHandler(this, &Login::Login_Load);
@@ -301,7 +320,14 @@ namespace CCasino {
 		}
 		else
 		{
-
+			string login = marshal_as<string>(loginTextField->Text);
+			string password = marshal_as<string>(passwordTextField->Text);
+			if (signIn(login, password))
+				errorPassLable->Text = "Signed In succesful";
+			else
+			{
+				errorPassLable->Text = "Failed, no user with such Login or Password";
+			}
 		}
 	}
 };
