@@ -1,4 +1,3 @@
-﻿  SignIn.cpp
-C:\CourseProject\C-Casino\C-Casino\C-Casino\SignIn.cpp(39,32): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+﻿  Login.cpp
   Login.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   C-Casino.vcxproj -> C:\CourseProject\C-Casino\C-Casino\x64\Debug\C-Casino.exe

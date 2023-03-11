@@ -2,6 +2,7 @@
 #include "SignIn.h"
 #include "SignUp.h"
 #include <msclr/marshal_cppstd.h>
+#include <string>
 
 using namespace msclr::interop;
 
@@ -29,7 +30,6 @@ namespace CCasino {
 			//TODO: добавьте код конструктора
 			//
 		}
-
 	protected:
 		/// <summary>
 		/// Освободить все используемые ресурсы.
@@ -266,6 +266,8 @@ namespace CCasino {
 
 
 	private: System::Void passwordTextField_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		//making text red if length < 6
+
 		if (this->passwordTextField->Text->Length < 6)
 			this->passwordTextField->ForeColor = Color::Red;
 		else
@@ -274,6 +276,8 @@ namespace CCasino {
 		}
 	}
 	private: System::Void registLable_Click(System::Object^ sender, System::EventArgs^ e) {
+		//changing mode from register to login
+		//enable / disable confirm password field
 		this->confirmPassLable->Visible = !confirmPassLable->Visible;
 		this->confirmPassTextField->Visible = !confirmPassTextField->Visible;
 		if (confirmPassLable->Visible) {
@@ -286,6 +290,8 @@ namespace CCasino {
 		}
 	}
 	private: System::Void showPass_Click(System::Object^ sender, System::EventArgs^ e) {
+		//showing / hiding
+
 		if (!showPassBool) {
 			this->showPass->ImageLocation = "./hide.png";
 			showPassBool = !showPassBool;
@@ -305,27 +311,63 @@ namespace CCasino {
 			this->confirmPassTextField->ForeColor = Color::Black;
 		}
 	}
+	public: 
+	int checkPassIdentity(String^ str1, String^ str2) {
+		if (str1 == str2)
+			return 1;
+		else
+			return 0;
+	}
+	int checkPassLength(String^ str1, String^ str2, String^ login) {
+		string loginStr = marshal_as<string>(login);
+		if (signIn(loginStr, "", 0))
+			return 4;
+		if (str1->Length < 6 || str2->Length < 6)
+			return 2;
+		else {
+			if (checkPassIdentity(str1, str2))
+				return 1;
+			else
+				return 3;
+		}
+	}
 	private: System::Void signInButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (this->confirmPassTextField->Visible) {
-			if (this->passwordTextField->Text != confirmPassTextField->Text) {
-				errorPassLable->Text = "Ошибка, пароли должны совпадать";
+			string loginInp = marshal_as<string>(loginTextField->Text);
+			string passwordInp = marshal_as<string>(passwordTextField->Text);
+			switch (checkPassLength(confirmPassTextField->Text, passwordTextField->Text, loginTextField->Text)) {
+			case 2: 
 				errorPassLable->Visible = true;
-			}
-			else if (passwordTextField->Text->Length < 6 || confirmPassTextField->Text->Length < 6){
-				errorPassLable->Text = "Ошибка, пароль должен быть > 6 символов";
+				errorPassLable->Text = "Password length must be > 6 symbols";
+				break;
+			case 3:
 				errorPassLable->Visible = true;
+				errorPassLable->Text = "Passwords Don't Match";
+				break;
+			case 1:
+				errorPassLable->Visible = true;
+				errorPassLable->Text = "Registred! TODO: Call func()";
+				
+				if (!fileInput(loginInp, passwordInp))
+					errorPassLable->Text = "Some errors while file input";
+				break;
+			case 4:
+				errorPassLable->Visible = true;
+				errorPassLable->Text = "This login is already registred";
+				break;
 			}
-			else
-				errorPassLable->Visible = false;
 		}
 		else
 		{
 			string login = marshal_as<string>(loginTextField->Text);
 			string password = marshal_as<string>(passwordTextField->Text);
-			if (signIn(login, password))
+			if (signIn(login, password, 1)) {
+				errorPassLable->Visible = true;
 				errorPassLable->Text = "Signed In succesful";
+			}
 			else
 			{
+				errorPassLable->Visible = true;
 				errorPassLable->Text = "Failed, no user with such Login or Password";
 			}
 		}

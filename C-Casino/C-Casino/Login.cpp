@@ -1,4 +1,5 @@
 #include "Login.h"
+#include "SignUp.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -11,3 +12,6 @@ int main(cli::array<String^>^) {
 	CCasino::Login form;
 	Application::Run(% form);
 }
+
+
+
