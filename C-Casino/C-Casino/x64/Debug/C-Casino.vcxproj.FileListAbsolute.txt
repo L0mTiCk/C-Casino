@@ -10,3 +10,4 @@ C:\CourseProject\C-Casino\C-Casino\C-Casino\x64\Debug\C-Casino.vcxproj.AssemblyR
 C:\CourseProject\C-Casino\C-Casino\C-Casino\x64\Debug\C-Casino.vcxproj.SuggestedBindingRedirects.cache
 C:\CourseProject\C-Casino\C-Casino\C-Casino\x64\Debug\CCasino.Login.resources
 C:\CourseProject\C-Casino\C-Casino\C-Casino\x64\Debug\C-Casino.vcxproj.GenerateResource.cache
+C:\CourseProject\C-Casino\C-Casino\C-Casino\x64\Debug\CCasino.MainScreen.resources

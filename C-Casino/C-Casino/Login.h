@@ -1,6 +1,7 @@
 #pragma once
 #include "SignIn.h"
 #include "SignUp.h"
+#include "MainScreen.h"
 #include <msclr/marshal_cppstd.h>
 #include <string>
 
@@ -346,8 +347,7 @@ namespace CCasino {
 				break;
 			case 1:
 				errorPassLable->Visible = true;
-				errorPassLable->Text = "Registred! TODO: Call func()";
-				
+				errorPassLable->Text = "Registred!";
 				if (!fileInput(loginInp, passwordInp))
 					errorPassLable->Text = "Some errors while file input";
 				break;
@@ -364,6 +364,9 @@ namespace CCasino {
 			if (signIn(login, password, 1)) {
 				errorPassLable->Visible = true;
 				errorPassLable->Text = "Signed In succesful";
+				MainScreen^ mainScreen = gcnew MainScreen();
+				mainScreen->Show();
+				Login::Hide();
 			}
 			else
 			{

@@ -120,10 +120,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Login.cpp" />
+    <ClCompile Include="MainScreen.cpp" />
     <ClCompile Include="SignIn.cpp" />
     <ClCompile Include="SignUp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MainScreen.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="SignUp.h" />
     <ClInclude Include="Login.h">
       <FileType>CppForm</FileType>
@@ -134,10 +138,14 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainScreen.resx">
+      <DependentUpon>MainScreen.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\hide.png" />
     <Image Include="..\..\..\..\Downloads\show.png" />
+    <Image Include="..\..\..\..\Users\Aleksey\Downloads\greenBackground.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

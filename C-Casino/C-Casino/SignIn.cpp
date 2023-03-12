@@ -51,6 +51,7 @@ bool isFileCreated() {
 	return true;
 }
 
+//filling vectors with logins and passwords
 void fillVector(string str, vector<string>* logins, vector<string>* passwords) {
 	int spaceIndex = str.find(" ");
 	string word;
