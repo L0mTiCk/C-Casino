@@ -91,8 +91,18 @@ namespace CCasino {
 
 	private: System::Windows::Forms::Button^ betButtonSecondHalf;
 	private: System::Windows::Forms::Button^ betButtonZero;
-	private: System::Windows::Forms::Panel^ rouletteWheelPanel;
-	private: System::Windows::Forms::Panel^ rouletteBallPanel;
+	private: System::Windows::Forms::Button^ exitButton;
+
+
+
+	private: System::Windows::Forms::Button^ spinButton;
+	public: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Timer^ wheelTimer;
+	public:
+	private: System::ComponentModel::IContainer^ components;
+	private:
+
+
 
 
 
@@ -107,7 +117,7 @@ namespace CCasino {
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -116,6 +126,7 @@ namespace CCasino {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainScreen::typeid));
 			this->betButton1 = (gcnew System::Windows::Forms::Button());
 			this->betButton2 = (gcnew System::Windows::Forms::Button());
@@ -166,9 +177,11 @@ namespace CCasino {
 			this->betButtonOdd = (gcnew System::Windows::Forms::Button());
 			this->betButtonSecondHalf = (gcnew System::Windows::Forms::Button());
 			this->betButtonZero = (gcnew System::Windows::Forms::Button());
-			this->rouletteWheelPanel = (gcnew System::Windows::Forms::Panel());
-			this->rouletteBallPanel = (gcnew System::Windows::Forms::Panel());
-			this->rouletteWheelPanel->SuspendLayout();
+			this->exitButton = (gcnew System::Windows::Forms::Button());
+			this->spinButton = (gcnew System::Windows::Forms::Button());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->wheelTimer = (gcnew System::Windows::Forms::Timer(this->components));
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// betButton1
@@ -179,7 +192,7 @@ namespace CCasino {
 			this->betButton1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton1->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton1->Location = System::Drawing::Point(420, 159);
+			this->betButton1->Location = System::Drawing::Point(404, 196);
 			this->betButton1->Margin = System::Windows::Forms::Padding(0);
 			this->betButton1->Name = L"betButton1";
 			this->betButton1->Size = System::Drawing::Size(65, 65);
@@ -195,7 +208,7 @@ namespace CCasino {
 			this->betButton2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton2->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton2->Location = System::Drawing::Point(420, 97);
+			this->betButton2->Location = System::Drawing::Point(404, 134);
 			this->betButton2->Margin = System::Windows::Forms::Padding(0);
 			this->betButton2->Name = L"betButton2";
 			this->betButton2->Size = System::Drawing::Size(65, 65);
@@ -211,7 +224,7 @@ namespace CCasino {
 			this->betButton3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton3->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton3->Location = System::Drawing::Point(420, 35);
+			this->betButton3->Location = System::Drawing::Point(404, 72);
 			this->betButton3->Margin = System::Windows::Forms::Padding(0);
 			this->betButton3->Name = L"betButton3";
 			this->betButton3->Size = System::Drawing::Size(65, 65);
@@ -227,7 +240,7 @@ namespace CCasino {
 			this->betButton6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton6->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton6->Location = System::Drawing::Point(481, 35);
+			this->betButton6->Location = System::Drawing::Point(465, 72);
 			this->betButton6->Margin = System::Windows::Forms::Padding(0);
 			this->betButton6->Name = L"betButton6";
 			this->betButton6->Size = System::Drawing::Size(65, 65);
@@ -243,7 +256,7 @@ namespace CCasino {
 			this->betButton5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton5->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton5->Location = System::Drawing::Point(481, 97);
+			this->betButton5->Location = System::Drawing::Point(465, 134);
 			this->betButton5->Margin = System::Windows::Forms::Padding(0);
 			this->betButton5->Name = L"betButton5";
 			this->betButton5->Size = System::Drawing::Size(65, 65);
@@ -259,7 +272,7 @@ namespace CCasino {
 			this->betButton4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton4->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton4->Location = System::Drawing::Point(481, 159);
+			this->betButton4->Location = System::Drawing::Point(465, 196);
 			this->betButton4->Margin = System::Windows::Forms::Padding(0);
 			this->betButton4->Name = L"betButton4";
 			this->betButton4->Size = System::Drawing::Size(65, 65);
@@ -275,7 +288,7 @@ namespace CCasino {
 			this->betButton9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton9->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton9->Location = System::Drawing::Point(546, 35);
+			this->betButton9->Location = System::Drawing::Point(530, 72);
 			this->betButton9->Margin = System::Windows::Forms::Padding(0);
 			this->betButton9->Name = L"betButton9";
 			this->betButton9->Size = System::Drawing::Size(65, 65);
@@ -291,7 +304,7 @@ namespace CCasino {
 			this->betButton8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton8->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton8->Location = System::Drawing::Point(546, 97);
+			this->betButton8->Location = System::Drawing::Point(530, 134);
 			this->betButton8->Margin = System::Windows::Forms::Padding(0);
 			this->betButton8->Name = L"betButton8";
 			this->betButton8->Size = System::Drawing::Size(65, 65);
@@ -307,7 +320,7 @@ namespace CCasino {
 			this->betButton7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton7->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton7->Location = System::Drawing::Point(546, 159);
+			this->betButton7->Location = System::Drawing::Point(530, 196);
 			this->betButton7->Margin = System::Windows::Forms::Padding(0);
 			this->betButton7->Name = L"betButton7";
 			this->betButton7->Size = System::Drawing::Size(65, 65);
@@ -323,7 +336,7 @@ namespace CCasino {
 			this->betButton12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton12->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton12->Location = System::Drawing::Point(606, 35);
+			this->betButton12->Location = System::Drawing::Point(590, 72);
 			this->betButton12->Margin = System::Windows::Forms::Padding(0);
 			this->betButton12->Name = L"betButton12";
 			this->betButton12->Size = System::Drawing::Size(65, 65);
@@ -339,7 +352,7 @@ namespace CCasino {
 			this->betButton11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton11->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton11->Location = System::Drawing::Point(606, 97);
+			this->betButton11->Location = System::Drawing::Point(590, 134);
 			this->betButton11->Margin = System::Windows::Forms::Padding(0);
 			this->betButton11->Name = L"betButton11";
 			this->betButton11->Size = System::Drawing::Size(65, 65);
@@ -355,7 +368,7 @@ namespace CCasino {
 			this->betButton10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton10->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton10->Location = System::Drawing::Point(606, 159);
+			this->betButton10->Location = System::Drawing::Point(590, 196);
 			this->betButton10->Margin = System::Windows::Forms::Padding(0);
 			this->betButton10->Name = L"betButton10";
 			this->betButton10->Size = System::Drawing::Size(65, 65);
@@ -371,7 +384,7 @@ namespace CCasino {
 			this->betButton18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton18->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton18->Location = System::Drawing::Point(732, 35);
+			this->betButton18->Location = System::Drawing::Point(716, 72);
 			this->betButton18->Margin = System::Windows::Forms::Padding(0);
 			this->betButton18->Name = L"betButton18";
 			this->betButton18->Size = System::Drawing::Size(65, 65);
@@ -387,7 +400,7 @@ namespace CCasino {
 			this->betButton17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton17->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton17->Location = System::Drawing::Point(732, 97);
+			this->betButton17->Location = System::Drawing::Point(716, 134);
 			this->betButton17->Margin = System::Windows::Forms::Padding(0);
 			this->betButton17->Name = L"betButton17";
 			this->betButton17->Size = System::Drawing::Size(65, 65);
@@ -403,7 +416,7 @@ namespace CCasino {
 			this->betButton16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton16->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton16->Location = System::Drawing::Point(732, 159);
+			this->betButton16->Location = System::Drawing::Point(716, 196);
 			this->betButton16->Margin = System::Windows::Forms::Padding(0);
 			this->betButton16->Name = L"betButton16";
 			this->betButton16->Size = System::Drawing::Size(65, 65);
@@ -419,7 +432,7 @@ namespace CCasino {
 			this->betButton15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton15->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton15->Location = System::Drawing::Point(671, 35);
+			this->betButton15->Location = System::Drawing::Point(655, 72);
 			this->betButton15->Margin = System::Windows::Forms::Padding(0);
 			this->betButton15->Name = L"betButton15";
 			this->betButton15->Size = System::Drawing::Size(65, 65);
@@ -435,7 +448,7 @@ namespace CCasino {
 			this->betButton14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton14->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton14->Location = System::Drawing::Point(671, 97);
+			this->betButton14->Location = System::Drawing::Point(655, 134);
 			this->betButton14->Margin = System::Windows::Forms::Padding(0);
 			this->betButton14->Name = L"betButton14";
 			this->betButton14->Size = System::Drawing::Size(65, 65);
@@ -451,7 +464,7 @@ namespace CCasino {
 			this->betButton13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton13->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton13->Location = System::Drawing::Point(671, 159);
+			this->betButton13->Location = System::Drawing::Point(655, 196);
 			this->betButton13->Margin = System::Windows::Forms::Padding(0);
 			this->betButton13->Name = L"betButton13";
 			this->betButton13->Size = System::Drawing::Size(65, 65);
@@ -467,7 +480,7 @@ namespace CCasino {
 			this->betButton27->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton27->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton27->Location = System::Drawing::Point(922, 35);
+			this->betButton27->Location = System::Drawing::Point(906, 72);
 			this->betButton27->Margin = System::Windows::Forms::Padding(0);
 			this->betButton27->Name = L"betButton27";
 			this->betButton27->Size = System::Drawing::Size(65, 65);
@@ -483,7 +496,7 @@ namespace CCasino {
 			this->betButton26->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton26->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton26->Location = System::Drawing::Point(922, 97);
+			this->betButton26->Location = System::Drawing::Point(906, 134);
 			this->betButton26->Margin = System::Windows::Forms::Padding(0);
 			this->betButton26->Name = L"betButton26";
 			this->betButton26->Size = System::Drawing::Size(65, 65);
@@ -499,7 +512,7 @@ namespace CCasino {
 			this->betButton25->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton25->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton25->Location = System::Drawing::Point(922, 159);
+			this->betButton25->Location = System::Drawing::Point(906, 196);
 			this->betButton25->Margin = System::Windows::Forms::Padding(0);
 			this->betButton25->Name = L"betButton25";
 			this->betButton25->Size = System::Drawing::Size(65, 65);
@@ -515,7 +528,7 @@ namespace CCasino {
 			this->betButton24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton24->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton24->Location = System::Drawing::Point(861, 35);
+			this->betButton24->Location = System::Drawing::Point(845, 72);
 			this->betButton24->Margin = System::Windows::Forms::Padding(0);
 			this->betButton24->Name = L"betButton24";
 			this->betButton24->Size = System::Drawing::Size(65, 65);
@@ -531,7 +544,7 @@ namespace CCasino {
 			this->betButton23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton23->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton23->Location = System::Drawing::Point(861, 97);
+			this->betButton23->Location = System::Drawing::Point(845, 134);
 			this->betButton23->Margin = System::Windows::Forms::Padding(0);
 			this->betButton23->Name = L"betButton23";
 			this->betButton23->Size = System::Drawing::Size(65, 65);
@@ -547,7 +560,7 @@ namespace CCasino {
 			this->betButton22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton22->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton22->Location = System::Drawing::Point(861, 159);
+			this->betButton22->Location = System::Drawing::Point(845, 196);
 			this->betButton22->Margin = System::Windows::Forms::Padding(0);
 			this->betButton22->Name = L"betButton22";
 			this->betButton22->Size = System::Drawing::Size(65, 65);
@@ -563,7 +576,7 @@ namespace CCasino {
 			this->betButton21->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton21->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton21->Location = System::Drawing::Point(796, 35);
+			this->betButton21->Location = System::Drawing::Point(780, 72);
 			this->betButton21->Margin = System::Windows::Forms::Padding(0);
 			this->betButton21->Name = L"betButton21";
 			this->betButton21->Size = System::Drawing::Size(65, 65);
@@ -579,7 +592,7 @@ namespace CCasino {
 			this->betButton20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton20->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton20->Location = System::Drawing::Point(796, 97);
+			this->betButton20->Location = System::Drawing::Point(780, 134);
 			this->betButton20->Margin = System::Windows::Forms::Padding(0);
 			this->betButton20->Name = L"betButton20";
 			this->betButton20->Size = System::Drawing::Size(65, 65);
@@ -595,7 +608,7 @@ namespace CCasino {
 			this->betButton19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton19->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton19->Location = System::Drawing::Point(796, 159);
+			this->betButton19->Location = System::Drawing::Point(780, 196);
 			this->betButton19->Margin = System::Windows::Forms::Padding(0);
 			this->betButton19->Name = L"betButton19";
 			this->betButton19->Size = System::Drawing::Size(65, 65);
@@ -611,7 +624,7 @@ namespace CCasino {
 			this->betButton36->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton36->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton36->Location = System::Drawing::Point(1113, 35);
+			this->betButton36->Location = System::Drawing::Point(1097, 72);
 			this->betButton36->Margin = System::Windows::Forms::Padding(0);
 			this->betButton36->Name = L"betButton36";
 			this->betButton36->Size = System::Drawing::Size(65, 65);
@@ -627,7 +640,7 @@ namespace CCasino {
 			this->betButton35->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton35->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton35->Location = System::Drawing::Point(1113, 97);
+			this->betButton35->Location = System::Drawing::Point(1097, 134);
 			this->betButton35->Margin = System::Windows::Forms::Padding(0);
 			this->betButton35->Name = L"betButton35";
 			this->betButton35->Size = System::Drawing::Size(65, 65);
@@ -643,7 +656,7 @@ namespace CCasino {
 			this->betButton34->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton34->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton34->Location = System::Drawing::Point(1113, 159);
+			this->betButton34->Location = System::Drawing::Point(1097, 196);
 			this->betButton34->Margin = System::Windows::Forms::Padding(0);
 			this->betButton34->Name = L"betButton34";
 			this->betButton34->Size = System::Drawing::Size(65, 65);
@@ -659,7 +672,7 @@ namespace CCasino {
 			this->betButton33->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton33->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton33->Location = System::Drawing::Point(1052, 35);
+			this->betButton33->Location = System::Drawing::Point(1036, 72);
 			this->betButton33->Margin = System::Windows::Forms::Padding(0);
 			this->betButton33->Name = L"betButton33";
 			this->betButton33->Size = System::Drawing::Size(65, 65);
@@ -675,7 +688,7 @@ namespace CCasino {
 			this->betButton32->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton32->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton32->Location = System::Drawing::Point(1052, 97);
+			this->betButton32->Location = System::Drawing::Point(1036, 134);
 			this->betButton32->Margin = System::Windows::Forms::Padding(0);
 			this->betButton32->Name = L"betButton32";
 			this->betButton32->Size = System::Drawing::Size(65, 65);
@@ -691,7 +704,7 @@ namespace CCasino {
 			this->betButton31->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton31->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton31->Location = System::Drawing::Point(1052, 159);
+			this->betButton31->Location = System::Drawing::Point(1036, 196);
 			this->betButton31->Margin = System::Windows::Forms::Padding(0);
 			this->betButton31->Name = L"betButton31";
 			this->betButton31->Size = System::Drawing::Size(65, 65);
@@ -707,7 +720,7 @@ namespace CCasino {
 			this->betButton30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton30->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton30->Location = System::Drawing::Point(987, 35);
+			this->betButton30->Location = System::Drawing::Point(971, 72);
 			this->betButton30->Margin = System::Windows::Forms::Padding(0);
 			this->betButton30->Name = L"betButton30";
 			this->betButton30->Size = System::Drawing::Size(65, 65);
@@ -723,7 +736,7 @@ namespace CCasino {
 			this->betButton29->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton29->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton29->Location = System::Drawing::Point(987, 97);
+			this->betButton29->Location = System::Drawing::Point(971, 134);
 			this->betButton29->Margin = System::Windows::Forms::Padding(0);
 			this->betButton29->Name = L"betButton29";
 			this->betButton29->Size = System::Drawing::Size(65, 65);
@@ -739,7 +752,7 @@ namespace CCasino {
 			this->betButton28->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButton28->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButton28->Location = System::Drawing::Point(987, 159);
+			this->betButton28->Location = System::Drawing::Point(971, 196);
 			this->betButton28->Margin = System::Windows::Forms::Padding(0);
 			this->betButton28->Name = L"betButton28";
 			this->betButton28->Size = System::Drawing::Size(65, 65);
@@ -757,7 +770,7 @@ namespace CCasino {
 			this->betLine1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betLine1->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betLine1->Location = System::Drawing::Point(1178, 159);
+			this->betLine1->Location = System::Drawing::Point(1162, 196);
 			this->betLine1->Margin = System::Windows::Forms::Padding(0);
 			this->betLine1->Name = L"betLine1";
 			this->betLine1->Size = System::Drawing::Size(56, 65);
@@ -775,7 +788,7 @@ namespace CCasino {
 			this->betLine2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betLine2->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betLine2->Location = System::Drawing::Point(1178, 97);
+			this->betLine2->Location = System::Drawing::Point(1162, 134);
 			this->betLine2->Margin = System::Windows::Forms::Padding(0);
 			this->betLine2->Name = L"betLine2";
 			this->betLine2->Size = System::Drawing::Size(56, 65);
@@ -793,7 +806,7 @@ namespace CCasino {
 			this->betLine3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betLine3->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betLine3->Location = System::Drawing::Point(1178, 35);
+			this->betLine3->Location = System::Drawing::Point(1162, 72);
 			this->betLine3->Margin = System::Windows::Forms::Padding(0);
 			this->betLine3->Name = L"betLine3";
 			this->betLine3->Size = System::Drawing::Size(56, 65);
@@ -810,7 +823,7 @@ namespace CCasino {
 			this->betFirst12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betFirst12->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betFirst12->Location = System::Drawing::Point(420, 224);
+			this->betFirst12->Location = System::Drawing::Point(404, 261);
 			this->betFirst12->Margin = System::Windows::Forms::Padding(0);
 			this->betFirst12->Name = L"betFirst12";
 			this->betFirst12->Size = System::Drawing::Size(251, 49);
@@ -828,7 +841,7 @@ namespace CCasino {
 			this->betThird12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betThird12->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betThird12->Location = System::Drawing::Point(922, 224);
+			this->betThird12->Location = System::Drawing::Point(906, 261);
 			this->betThird12->Margin = System::Windows::Forms::Padding(0);
 			this->betThird12->Name = L"betThird12";
 			this->betThird12->Size = System::Drawing::Size(256, 49);
@@ -846,7 +859,7 @@ namespace CCasino {
 			this->betSecond12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betSecond12->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betSecond12->Location = System::Drawing::Point(671, 224);
+			this->betSecond12->Location = System::Drawing::Point(655, 261);
 			this->betSecond12->Margin = System::Windows::Forms::Padding(0);
 			this->betSecond12->Name = L"betSecond12";
 			this->betSecond12->Size = System::Drawing::Size(251, 49);
@@ -864,7 +877,7 @@ namespace CCasino {
 			this->betButtonFirstHalf->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButtonFirstHalf->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButtonFirstHalf->Location = System::Drawing::Point(420, 273);
+			this->betButtonFirstHalf->Location = System::Drawing::Point(404, 310);
 			this->betButtonFirstHalf->Margin = System::Windows::Forms::Padding(0);
 			this->betButtonFirstHalf->Name = L"betButtonFirstHalf";
 			this->betButtonFirstHalf->Size = System::Drawing::Size(126, 49);
@@ -882,7 +895,7 @@ namespace CCasino {
 			this->betButtonEven->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButtonEven->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButtonEven->Location = System::Drawing::Point(546, 273);
+			this->betButtonEven->Location = System::Drawing::Point(530, 310);
 			this->betButtonEven->Margin = System::Windows::Forms::Padding(0);
 			this->betButtonEven->Name = L"betButtonEven";
 			this->betButtonEven->Size = System::Drawing::Size(125, 49);
@@ -902,7 +915,7 @@ namespace CCasino {
 			this->betButtonRed->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButtonRed->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButtonRed->Location = System::Drawing::Point(671, 273);
+			this->betButtonRed->Location = System::Drawing::Point(655, 310);
 			this->betButtonRed->Margin = System::Windows::Forms::Padding(0);
 			this->betButtonRed->Name = L"betButtonRed";
 			this->betButtonRed->Size = System::Drawing::Size(126, 49);
@@ -921,7 +934,7 @@ namespace CCasino {
 			this->betButtonBlack->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButtonBlack->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButtonBlack->Location = System::Drawing::Point(796, 273);
+			this->betButtonBlack->Location = System::Drawing::Point(780, 310);
 			this->betButtonBlack->Margin = System::Windows::Forms::Padding(0);
 			this->betButtonBlack->Name = L"betButtonBlack";
 			this->betButtonBlack->Size = System::Drawing::Size(126, 49);
@@ -938,7 +951,7 @@ namespace CCasino {
 			this->betButtonOdd->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButtonOdd->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButtonOdd->Location = System::Drawing::Point(922, 273);
+			this->betButtonOdd->Location = System::Drawing::Point(906, 310);
 			this->betButtonOdd->Margin = System::Windows::Forms::Padding(0);
 			this->betButtonOdd->Name = L"betButtonOdd";
 			this->betButtonOdd->Size = System::Drawing::Size(130, 49);
@@ -956,7 +969,7 @@ namespace CCasino {
 			this->betButtonSecondHalf->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->betButtonSecondHalf->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->betButtonSecondHalf->Location = System::Drawing::Point(1052, 273);
+			this->betButtonSecondHalf->Location = System::Drawing::Point(1036, 310);
 			this->betButtonSecondHalf->Margin = System::Windows::Forms::Padding(0);
 			this->betButtonSecondHalf->Name = L"betButtonSecondHalf";
 			this->betButtonSecondHalf->Size = System::Drawing::Size(126, 49);
@@ -977,7 +990,7 @@ namespace CCasino {
 			this->betButtonZero->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->betButtonZero->ForeColor = System::Drawing::Color::Transparent;
-			this->betButtonZero->Location = System::Drawing::Point(356, 35);
+			this->betButtonZero->Location = System::Drawing::Point(340, 72);
 			this->betButtonZero->Margin = System::Windows::Forms::Padding(0);
 			this->betButtonZero->Name = L"betButtonZero";
 			this->betButtonZero->Size = System::Drawing::Size(64, 189);
@@ -985,27 +998,49 @@ namespace CCasino {
 			this->betButtonZero->Text = L"0";
 			this->betButtonZero->UseVisualStyleBackColor = false;
 			// 
-			// rouletteWheelPanel
+			// exitButton
 			// 
-			this->rouletteWheelPanel->BackColor = System::Drawing::Color::Transparent;
-			this->rouletteWheelPanel->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"rouletteWheelPanel.BackgroundImage")));
-			this->rouletteWheelPanel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->rouletteWheelPanel->Controls->Add(this->rouletteBallPanel);
-			this->rouletteWheelPanel->Location = System::Drawing::Point(12, 284);
-			this->rouletteWheelPanel->Name = L"rouletteWheelPanel";
-			this->rouletteWheelPanel->Size = System::Drawing::Size(377, 377);
-			this->rouletteWheelPanel->TabIndex = 49;
+			this->exitButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->exitButton->FlatAppearance->BorderSize = 0;
+			this->exitButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->exitButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->exitButton->ForeColor = System::Drawing::Color::White;
+			this->exitButton->Location = System::Drawing::Point(1192, 12);
+			this->exitButton->Name = L"exitButton";
+			this->exitButton->Size = System::Drawing::Size(40, 40);
+			this->exitButton->TabIndex = 50;
+			this->exitButton->Text = L"X";
+			this->exitButton->UseVisualStyleBackColor = false;
+			this->exitButton->Click += gcnew System::EventHandler(this, &MainScreen::button1_Click);
 			// 
-			// rouletteBallPanel
+			// spinButton
 			// 
-			this->rouletteBallPanel->BackColor = System::Drawing::Color::Transparent;
-			this->rouletteBallPanel->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"rouletteBallPanel.BackgroundImage")));
-			this->rouletteBallPanel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->rouletteBallPanel->Location = System::Drawing::Point(59, 72);
-			this->rouletteBallPanel->Margin = System::Windows::Forms::Padding(0);
-			this->rouletteBallPanel->Name = L"rouletteBallPanel";
-			this->rouletteBallPanel->Size = System::Drawing::Size(255, 255);
-			this->rouletteBallPanel->TabIndex = 50;
+			this->spinButton->Location = System::Drawing::Point(696, 561);
+			this->spinButton->Name = L"spinButton";
+			this->spinButton->Size = System::Drawing::Size(75, 23);
+			this->spinButton->TabIndex = 51;
+			this->spinButton->Text = L"Spin";
+			this->spinButton->UseVisualStyleBackColor = true;
+			this->spinButton->Click += gcnew System::EventHandler(this, &MainScreen::spinButton_Click);
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(3, 310);
+			this->pictureBox1->MaximumSize = System::Drawing::Size(377, 377);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(377, 377);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox1->TabIndex = 52;
+			this->pictureBox1->TabStop = false;
+			// 
+			// wheelTimer
+			// 
+			this->wheelTimer->Interval = 20;
+			this->wheelTimer->Tick += gcnew System::EventHandler(this, &MainScreen::wheelTimer_Tick);
 			// 
 			// MainScreen
 			// 
@@ -1014,8 +1049,10 @@ namespace CCasino {
 			this->BackColor = System::Drawing::SystemColors::Control;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1262, 673);
-			this->Controls->Add(this->rouletteWheelPanel);
+			this->ClientSize = System::Drawing::Size(1262, 755);
+			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->spinButton);
+			this->Controls->Add(this->exitButton);
 			this->Controls->Add(this->betButtonZero);
 			this->Controls->Add(this->betButtonSecondHalf);
 			this->Controls->Add(this->betButtonOdd);
@@ -1066,17 +1103,63 @@ namespace CCasino {
 			this->Controls->Add(this->betButton2);
 			this->Controls->Add(this->betButton1);
 			this->DoubleBuffered = true;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"MainScreen";
 			this->Text = L"MainScreen";
 			this->Load += gcnew System::EventHandler(this, &MainScreen::MainScreen_Load);
-			this->rouletteWheelPanel->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+	int degree = 1;
 	private: System::Void MainScreen_Load(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		Application::Exit();
+	}
+
+	private: System::Void spinButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		wheelTimer->Start();
+	}
+	public: Image^ RotateImage(Image^ img, float rotationAngle) {
+		//create an empty Bitmap image
+		Image^ bmp = Image::FromFile("rouletteWheel.png");
+
+		//turn the Bitmap into a Graphics object
+		Graphics^ gfx = Graphics::FromImage(bmp);
+
+		//now we set the rotation point to the center of our image
+		gfx->TranslateTransform((float)bmp->Width / 2, (float)bmp->Height / 2);
+
+		//now rotate the image
+		gfx->RotateTransform(rotationAngle);
+
+		gfx->TranslateTransform(-(float)bmp->Width / 2, -(float)bmp->Height / 2);
+
+		//set the InterpolationMode to HighQualityBicubic so to ensure a high
+		//quality image once it is transformed to the specified size			   
+		gfx->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::HighQualityBicubic;
+		//now draw our new image onto the graphics object
+
+		gfx->DrawImage(img, 0, 0);
+
+		//dispose of our Graphics object
+		gfx->~Graphics();
+
+		//return the image
+		return bmp;
+	}
+	private: System::Void wheelTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+		if (degree < 361) {
+			pictureBox1->Image = RotateImage(pictureBox1->Image, 30);
+			degree += 30;
+		}
+		else
+			wheelTimer->Stop();
+	}
 };
 }
