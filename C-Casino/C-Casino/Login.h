@@ -365,6 +365,7 @@ namespace CCasino {
 				errorPassLable->Visible = true;
 				errorPassLable->Text = "Signed In succesful";
 				MainScreen^ mainScreen = gcnew MainScreen();
+				mainScreen->userIndex = returnId();
 				mainScreen->Show();
 				Login::Hide();
 			}

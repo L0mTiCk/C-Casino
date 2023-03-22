@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+#include "RandomGenerator.h"
+#include <vector>
 
 namespace CCasino {
 
@@ -22,6 +25,7 @@ namespace CCasino {
 			//TODO: добавьте код конструктора
 			//
 		}
+		int userIndex;
 
 	protected:
 		/// <summary>
@@ -35,7 +39,6 @@ namespace CCasino {
 			}
 		}
 	private: System::Windows::Forms::Button^ betButton1;
-	protected:
 	private: System::Windows::Forms::Button^ betButton2;
 	private: System::Windows::Forms::Button^ betButton3;
 	private: System::Windows::Forms::Button^ betButton6;
@@ -98,22 +101,19 @@ namespace CCasino {
 	private: System::Windows::Forms::Button^ spinButton;
 	public: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::Timer^ wheelTimer;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
+	private: System::Windows::Forms::Label^ winNumLable;
+	private: System::Windows::Forms::PictureBox^ redChipPictureBox;
+	private: System::Windows::Forms::PictureBox^ blueChipPictureBox;
+	private: System::Windows::Forms::PictureBox^ yellowChipPictureBox;
+	private: System::Windows::Forms::PictureBox^ greenChipPictureBox;
+
+	private: System::Windows::Forms::Label^ redChipBetText;
+	private: System::Windows::Forms::Label^ blueChipBetText;
+	private: System::Windows::Forms::Label^ yellowChipBetText;
+	private: System::Windows::Forms::Label^ greenChipBetText;
 	public:
 	private: System::ComponentModel::IContainer^ components;
-	private:
-
-
-
-
-
-
-
-
-	protected:
-
-	protected:
-
-	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
@@ -181,7 +181,22 @@ namespace CCasino {
 			this->spinButton = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->wheelTimer = (gcnew System::Windows::Forms::Timer(this->components));
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->winNumLable = (gcnew System::Windows::Forms::Label());
+			this->redChipPictureBox = (gcnew System::Windows::Forms::PictureBox());
+			this->blueChipPictureBox = (gcnew System::Windows::Forms::PictureBox());
+			this->yellowChipPictureBox = (gcnew System::Windows::Forms::PictureBox());
+			this->greenChipPictureBox = (gcnew System::Windows::Forms::PictureBox());
+			this->redChipBetText = (gcnew System::Windows::Forms::Label());
+			this->blueChipBetText = (gcnew System::Windows::Forms::Label());
+			this->yellowChipBetText = (gcnew System::Windows::Forms::Label());
+			this->greenChipBetText = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->redChipPictureBox))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->blueChipPictureBox))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->yellowChipPictureBox))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->greenChipPictureBox))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// betButton1
@@ -1017,7 +1032,7 @@ namespace CCasino {
 			// 
 			// spinButton
 			// 
-			this->spinButton->Location = System::Drawing::Point(696, 561);
+			this->spinButton->Location = System::Drawing::Point(570, 460);
 			this->spinButton->Name = L"spinButton";
 			this->spinButton->Size = System::Drawing::Size(75, 23);
 			this->spinButton->TabIndex = 51;
@@ -1033,7 +1048,7 @@ namespace CCasino {
 			this->pictureBox1->MaximumSize = System::Drawing::Size(377, 377);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(377, 377);
-			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 52;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -1042,14 +1057,148 @@ namespace CCasino {
 			this->wheelTimer->Interval = 20;
 			this->wheelTimer->Tick += gcnew System::EventHandler(this, &MainScreen::wheelTimer_Tick);
 			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->BackColor = System::Drawing::Color::Transparent;
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(177, 265);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(50, 50);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox2->TabIndex = 53;
+			this->pictureBox2->TabStop = false;
+			// 
+			// winNumLable
+			// 
+			this->winNumLable->AutoSize = true;
+			this->winNumLable->BackColor = System::Drawing::Color::Transparent;
+			this->winNumLable->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->winNumLable->ForeColor = System::Drawing::Color::White;
+			this->winNumLable->Location = System::Drawing::Point(166, 207);
+			this->winNumLable->Name = L"winNumLable";
+			this->winNumLable->Size = System::Drawing::Size(77, 54);
+			this->winNumLable->TabIndex = 54;
+			this->winNumLable->Text = L"33";
+			// 
+			// redChipPictureBox
+			// 
+			this->redChipPictureBox->BackColor = System::Drawing::Color::Transparent;
+			this->redChipPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"redChipPictureBox.Image")));
+			this->redChipPictureBox->Location = System::Drawing::Point(465, 602);
+			this->redChipPictureBox->Name = L"redChipPictureBox";
+			this->redChipPictureBox->Size = System::Drawing::Size(79, 85);
+			this->redChipPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->redChipPictureBox->TabIndex = 55;
+			this->redChipPictureBox->TabStop = false;
+			this->redChipPictureBox->Click += gcnew System::EventHandler(this, &MainScreen::redChipPictureBox_Click);
+			// 
+			// blueChipPictureBox
+			// 
+			this->blueChipPictureBox->BackColor = System::Drawing::Color::Transparent;
+			this->blueChipPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"blueChipPictureBox.Image")));
+			this->blueChipPictureBox->Location = System::Drawing::Point(641, 602);
+			this->blueChipPictureBox->Name = L"blueChipPictureBox";
+			this->blueChipPictureBox->Size = System::Drawing::Size(79, 85);
+			this->blueChipPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->blueChipPictureBox->TabIndex = 56;
+			this->blueChipPictureBox->TabStop = false;
+			this->blueChipPictureBox->Click += gcnew System::EventHandler(this, &MainScreen::blueChipPictureBox_Click);
+			// 
+			// yellowChipPictureBox
+			// 
+			this->yellowChipPictureBox->BackColor = System::Drawing::Color::Transparent;
+			this->yellowChipPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"yellowChipPictureBox.Image")));
+			this->yellowChipPictureBox->Location = System::Drawing::Point(831, 602);
+			this->yellowChipPictureBox->Name = L"yellowChipPictureBox";
+			this->yellowChipPictureBox->Size = System::Drawing::Size(79, 85);
+			this->yellowChipPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->yellowChipPictureBox->TabIndex = 57;
+			this->yellowChipPictureBox->TabStop = false;
+			this->yellowChipPictureBox->Click += gcnew System::EventHandler(this, &MainScreen::yellowChipPictureBox_Click);
+			// 
+			// greenChipPictureBox
+			// 
+			this->greenChipPictureBox->BackColor = System::Drawing::Color::Transparent;
+			this->greenChipPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"greenChipPictureBox.Image")));
+			this->greenChipPictureBox->Location = System::Drawing::Point(1022, 602);
+			this->greenChipPictureBox->Name = L"greenChipPictureBox";
+			this->greenChipPictureBox->Size = System::Drawing::Size(79, 85);
+			this->greenChipPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->greenChipPictureBox->TabIndex = 58;
+			this->greenChipPictureBox->TabStop = false;
+			this->greenChipPictureBox->Click += gcnew System::EventHandler(this, &MainScreen::greenChipPictureBox_Click);
+			// 
+			// redChipBetText
+			// 
+			this->redChipBetText->AutoSize = true;
+			this->redChipBetText->BackColor = System::Drawing::Color::Transparent;
+			this->redChipBetText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->redChipBetText->ForeColor = System::Drawing::Color::White;
+			this->redChipBetText->Location = System::Drawing::Point(468, 554);
+			this->redChipBetText->Name = L"redChipBetText";
+			this->redChipBetText->Size = System::Drawing::Size(62, 42);
+			this->redChipBetText->TabIndex = 59;
+			this->redChipBetText->Text = L"10";
+			// 
+			// blueChipBetText
+			// 
+			this->blueChipBetText->AutoSize = true;
+			this->blueChipBetText->BackColor = System::Drawing::Color::Transparent;
+			this->blueChipBetText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->blueChipBetText->ForeColor = System::Drawing::Color::White;
+			this->blueChipBetText->Location = System::Drawing::Point(648, 554);
+			this->blueChipBetText->Name = L"blueChipBetText";
+			this->blueChipBetText->Size = System::Drawing::Size(62, 42);
+			this->blueChipBetText->TabIndex = 60;
+			this->blueChipBetText->Text = L"50";
+			// 
+			// yellowChipBetText
+			// 
+			this->yellowChipBetText->AutoSize = true;
+			this->yellowChipBetText->BackColor = System::Drawing::Color::Transparent;
+			this->yellowChipBetText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->yellowChipBetText->ForeColor = System::Drawing::Color::White;
+			this->yellowChipBetText->Location = System::Drawing::Point(826, 554);
+			this->yellowChipBetText->Name = L"yellowChipBetText";
+			this->yellowChipBetText->Size = System::Drawing::Size(84, 42);
+			this->yellowChipBetText->TabIndex = 61;
+			this->yellowChipBetText->Text = L"100";
+			// 
+			// greenChipBetText
+			// 
+			this->greenChipBetText->AutoSize = true;
+			this->greenChipBetText->BackColor = System::Drawing::Color::Transparent;
+			this->greenChipBetText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->greenChipBetText->ForeColor = System::Drawing::Color::White;
+			this->greenChipBetText->Location = System::Drawing::Point(1017, 554);
+			this->greenChipBetText->Name = L"greenChipBetText";
+			this->greenChipBetText->Size = System::Drawing::Size(84, 42);
+			this->greenChipBetText->TabIndex = 62;
+			this->greenChipBetText->Text = L"500";
+			// 
 			// MainScreen
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::Control;
+			this->BackColor = System::Drawing::SystemColors::ControlDark;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1262, 755);
+			this->Controls->Add(this->greenChipBetText);
+			this->Controls->Add(this->yellowChipBetText);
+			this->Controls->Add(this->blueChipBetText);
+			this->Controls->Add(this->redChipBetText);
+			this->Controls->Add(this->greenChipPictureBox);
+			this->Controls->Add(this->yellowChipPictureBox);
+			this->Controls->Add(this->blueChipPictureBox);
+			this->Controls->Add(this->redChipPictureBox);
+			this->Controls->Add(this->winNumLable);
+			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->spinButton);
 			this->Controls->Add(this->exitButton);
@@ -1108,14 +1257,24 @@ namespace CCasino {
 			this->Text = L"MainScreen";
 			this->Load += gcnew System::EventHandler(this, &MainScreen::MainScreen_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->redChipPictureBox))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->blueChipPictureBox))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->yellowChipPictureBox))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->greenChipPictureBox))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	int degree = 1;
-	private: System::Void MainScreen_Load(System::Object^ sender, System::EventArgs^ e) {
+	double degreeAll = 1;
+	double turnDegree = 2.8125;
+	double finalTurn;
+	int spins = 0;
+	Image^ originalWheel = Image::FromFile("rouletteWheel.png");
 
+	private: System::Void MainScreen_Load(System::Object^ sender, System::EventArgs^ e) {
+		std::cout <<"User id: " << userIndex  << "\n";
 	}
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1123,6 +1282,10 @@ namespace CCasino {
 	}
 
 	private: System::Void spinButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		degreeAll = 2.8125;
+		spins = 0;
+		turnDegree = 2.8125;
+		finalTurn = randomSin();
 		wheelTimer->Start();
 	}
 	public: Image^ RotateImage(Image^ img, float rotationAngle) {
@@ -1145,7 +1308,7 @@ namespace CCasino {
 		gfx->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::HighQualityBicubic;
 		//now draw our new image onto the graphics object
 
-		gfx->DrawImage(img, 0, 0);
+		gfx->DrawImage(bmp, 0, 0);
 
 		//dispose of our Graphics object
 		gfx->~Graphics();
@@ -1154,12 +1317,84 @@ namespace CCasino {
 		return bmp;
 	}
 	private: System::Void wheelTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
-		if (degree < 361) {
-			pictureBox1->Image = RotateImage(pictureBox1->Image, 30);
-			degree += 30;
+		srand(time(NULL));
+		if (spins < 20) { 
+			if (degreeAll >=360) {
+				spins++;
+				pictureBox1->Image = Image::FromFile("rouletteWheel.png");
+				degreeAll = 0;
+			}
+			if (spins < 1) {
+				pictureBox1->Image = RotateImage(pictureBox1->Image, turnDegree);
+				float tempIncrease = turnDegree;
+				turnDegree += 2.8125 + tempIncrease;
+				degreeAll += 2.8125 + tempIncrease;
+			}
+
+			else {
+				pictureBox1->Image = RotateImage(pictureBox1->Image, turnDegree / 3);
+				turnDegree += turnDegree  / 4;
+				degreeAll += turnDegree / 4;
+			}
 		}
-		else
+		else{
+			GC::Collect();
+			finalTurn = randomSin();
+			pictureBox1->Image = RotateImage(pictureBox1->Image, finalTurn);
+			int winner = checkRouletteAngle(finalTurn);
+			std::cout << "\nWinner - " << winner;
+			winNumLable->Text = "" + winner;
 			wheelTimer->Stop();
+		}
+	}
+
+	void redChipChange(int mode) {
+		if (mode)
+			redChipPictureBox->Image = Image::FromFile("img/redChipPressed.png");
+		else
+			redChipPictureBox->Image = Image::FromFile("img/redChip.png");
+	}
+	void blueChipChange(int mode) {
+		if (mode)
+			blueChipPictureBox->Image = Image::FromFile("img/blueChipPressed.png");
+		else
+			blueChipPictureBox->Image = Image::FromFile("img/blueChip.png");
+	}
+	void yellowChipChange(int mode) {
+		if (mode)
+			yellowChipPictureBox->Image = Image::FromFile("img/yellowChipPressed.png");
+		else
+			yellowChipPictureBox->Image = Image::FromFile("img/yellowChip.png");
+	}
+	void greenChipChange(int mode) {
+		if (mode)
+			greenChipPictureBox->Image = Image::FromFile("img/greenChipPressed.png");
+		else
+			greenChipPictureBox->Image = Image::FromFile("img/greenChip.png");
+	}
+	private: System::Void redChipPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
+		redChipChange(1);
+		blueChipChange(0);
+		yellowChipChange(0);
+		greenChipChange(0);
+	}
+	private: System::Void blueChipPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
+		redChipChange(0);
+		blueChipChange(1);
+		yellowChipChange(0);
+		greenChipChange(0);
+	}
+	private: System::Void yellowChipPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
+		redChipChange(0);
+		blueChipChange(0);
+		yellowChipChange(1);
+		greenChipChange(0);
+	}
+	private: System::Void greenChipPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
+		redChipChange(0);
+		blueChipChange(0);
+		yellowChipChange(0);
+		greenChipChange(1);
 	}
 };
 }

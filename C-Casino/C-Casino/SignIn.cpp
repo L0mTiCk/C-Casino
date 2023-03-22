@@ -8,6 +8,8 @@
 
 using namespace std;
 
+int userId;
+
 int signIn(string login, string password, int mode) {
 	if (!isFileCreated()) {
 		createFile();
@@ -73,6 +75,7 @@ void fillVector(string str, vector<string>* logins, vector<string>* passwords) {
 int checkLogin(string login, vector<string>* logins) {
 	for (int i = 0; i < logins->size();i++) {
 		if (login == logins->at(i)) {
+			userId = i;
 			return i + 1;
 		}
 	}
@@ -83,4 +86,8 @@ int checkPassword(string password, vector<string>* passwords, int index) {
 	if (password == passwords->at(index - 1))
 		return 1;
 	return 0;
+}
+
+int returnId() {
+	return userId;
 }

@@ -1,0 +1,67 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.35.32215.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/courseproject/c-casino/c-casino/c-casino/login.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "c6b44f8f4728cac5cdca3aa5706dc30bcfca1133b46e861311a7697a458a13d1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/courseproject/c-casino/c-casino/c-casino/login.h"
+          },
+          "hashes": {
+            "sha-256": "c7a5dc2def7602fd415ee60209ab80161b54b9a9fd10fb12238de84b25974089"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/courseproject/c-casino/c-casino/c-casino/signin.h"
+          },
+          "hashes": {
+            "sha-256": "0f0d1b07af08831db20ed9a49fd6b8c9e52c3f0d2e50abea841866a70532ef76"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/courseproject/c-casino/c-casino/c-casino/signup.h"
+          },
+          "hashes": {
+            "sha-256": "c1fe18f02eb59ec719df3479e76c977b95042476583f043339e5a9791946f53b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/courseproject/c-casino/c-casino/c-casino/mainscreen.h"
+          },
+          "hashes": {
+            "sha-256": "c39ea43fd5045113fc6fa33c67f7b0f0e05ea552772a4cfa09075bc6a9085ab1"
+          }
+        }
+      ]
+    }
+  ]
+}
