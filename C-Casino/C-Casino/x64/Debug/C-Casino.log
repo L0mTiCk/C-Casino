@@ -1,15 +1,11 @@
-﻿  Login.cpp
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1319,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1327,58): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1328,24): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1334,69): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1342,57): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-  MainScreen.cpp
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1319,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1327,58): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1328,24): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1334,69): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1342,57): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+﻿  Admin.cpp
+  Login.cpp
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1406,32): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1455,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1463,58): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1464,24): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1470,69): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1478,57): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
   Создание кода...
-  Login.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  Admin.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   C-Casino.vcxproj -> C:\CourseProject\C-Casino\C-Casino\x64\Debug\C-Casino.exe

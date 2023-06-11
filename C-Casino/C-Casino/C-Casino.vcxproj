@@ -119,26 +119,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Admin.cpp" />
     <ClCompile Include="Login.cpp" />
+    <ClCompile Include="LogOut.cpp" />
     <ClCompile Include="MainScreen.cpp" />
     <ClCompile Include="RandomGenerator.cpp" />
+    <ClCompile Include="RouletteBet.cpp" />
     <ClCompile Include="SignIn.cpp" />
     <ClCompile Include="SignUp.cpp" />
-    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Admin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="LogOut.h" />
     <ClInclude Include="MainScreen.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="RandomGenerator.h" />
+    <ClInclude Include="RouletteBet.h" />
     <ClInclude Include="SignUp.h" />
     <ClInclude Include="Login.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SignIn.h" />
-    <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Admin.resx">
+      <DependentUpon>Admin.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.h</DependentUpon>
     </EmbeddedResource>

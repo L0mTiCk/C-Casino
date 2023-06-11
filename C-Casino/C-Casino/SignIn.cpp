@@ -22,7 +22,6 @@ int signIn(string login, string password, int mode) {
 		string str = "";
 		getline(file, str);
 		fillVector(str, &logins, &passwords);
-
 	}
 	file.close();
 	if (mode) {
@@ -90,4 +89,15 @@ int checkPassword(string password, vector<string>* passwords, int index) {
 
 int returnId() {
 	return userId;
+}
+
+void fillBalanceVector(vector<int>* balances) {
+	ifstream file("balance.txt");
+	while (!file.eof()) {
+		string str;
+		getline(file, str);
+		int tempBal = std::stoi(str);
+		balances->push_back(tempBal);
+	}
+	file.close();
 }

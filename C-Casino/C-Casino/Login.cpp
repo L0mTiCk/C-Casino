@@ -12,6 +12,3 @@ int main(cli::array<String^>^) {
 	CCasino::Login form;
 	Application::Run(% form);
 }
-
-
-

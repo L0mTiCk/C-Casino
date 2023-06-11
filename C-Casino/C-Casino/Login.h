@@ -2,6 +2,7 @@
 #include "SignIn.h"
 #include "SignUp.h"
 #include "MainScreen.h"
+#include "Admin.h"
 #include <msclr/marshal_cppstd.h>
 #include <string>
 
@@ -61,6 +62,7 @@ namespace CCasino {
 	private: System::Windows::Forms::TextBox^ confirmPassTextField;
 	private: System::Windows::Forms::PictureBox^ showPass;
 	private: System::Windows::Forms::Label^ errorPassLable;
+	private: System::Windows::Forms::Button^ exitButton;
 
 
 
@@ -94,6 +96,7 @@ namespace CCasino {
 			this->confirmPassTextField = (gcnew System::Windows::Forms::TextBox());
 			this->showPass = (gcnew System::Windows::Forms::PictureBox());
 			this->errorPassLable = (gcnew System::Windows::Forms::Label());
+			this->exitButton = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->showPass))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -228,11 +231,31 @@ namespace CCasino {
 			this->errorPassLable->Text = L"Ошибка, пароли должны совпадать";
 			this->errorPassLable->Visible = false;
 			// 
+			// exitButton
+			// 
+			this->exitButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->exitButton->FlatAppearance->BorderSize = 0;
+			this->exitButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->exitButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->exitButton->ForeColor = System::Drawing::Color::White;
+			this->exitButton->Location = System::Drawing::Point(1335, 26);
+			this->exitButton->Name = L"exitButton";
+			this->exitButton->Size = System::Drawing::Size(40, 40);
+			this->exitButton->TabIndex = 52;
+			this->exitButton->Text = L"X";
+			this->exitButton->UseVisualStyleBackColor = false;
+			this->exitButton->Click += gcnew System::EventHandler(this, &Login::exitButton_Click);
+			// 
 			// Login
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1172, 513);
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->ClientSize = System::Drawing::Size(1404, 930);
+			this->Controls->Add(this->exitButton);
 			this->Controls->Add(this->errorPassLable);
 			this->Controls->Add(this->showPass);
 			this->Controls->Add(this->confirmPassTextField);
@@ -244,6 +267,7 @@ namespace CCasino {
 			this->Controls->Add(this->loginLable);
 			this->Controls->Add(this->enteringLable);
 			this->Controls->Add(this->signInButton);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"Login";
 			this->Text = L"Login";
@@ -362,11 +386,18 @@ namespace CCasino {
 			string login = marshal_as<string>(loginTextField->Text);
 			string password = marshal_as<string>(passwordTextField->Text);
 			if (signIn(login, password, 1)) {
+				vector<int> balances{};
+				
 				errorPassLable->Visible = true;
 				errorPassLable->Text = "Signed In succesful";
+				Admin^ adminScreen = gcnew Admin();
 				MainScreen^ mainScreen = gcnew MainScreen();
-				mainScreen->userIndex = returnId();
-				mainScreen->Show();
+				mainScreen->userIndex = returnId();				//номер пользователя в файле
+				fillBalanceVector(&balances);
+				mainScreen->userBalance = balances.at(mainScreen->userIndex); //баланс пользователся по номеру из файла
+				cout << mainScreen->userBalance << " баланс текущего пользователя!\n";
+				//mainScreen->Show();
+				adminScreen->Show();
 				Login::Hide();
 			}
 			else
@@ -375,6 +406,9 @@ namespace CCasino {
 				errorPassLable->Text = "Failed, no user with such Login or Password";
 			}
 		}
+	}
+	private: System::Void exitButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		Application::Exit();
 	}
 };
 }

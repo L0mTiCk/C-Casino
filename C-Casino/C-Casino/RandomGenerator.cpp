@@ -15,7 +15,7 @@ double randomSin() {
 		randomNum = round(abs(cos((rand() % 359 + 1) * M_PI / 180)) * 360);
 		break;
 	}
-	cout << randomNum << endl;
+	//cout << randomNum << endl;
 	return randomNum;
 }
 
