@@ -140,7 +140,7 @@ namespace CCasino {
 			this->label3->ForeColor = System::Drawing::Color::White;
 			this->label3->Location = System::Drawing::Point(425, 409);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(731, 58);
+			this->label3->Size = System::Drawing::Size(581, 50);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Вы вошли как Администратор. Для редактирования баланса\r\nвведите Login аккаунта и "
 				L" введите новое значение баланса.\r\n";
@@ -172,7 +172,7 @@ namespace CCasino {
 				static_cast<System::Byte>(204)));
 			this->loginTextbox->Location = System::Drawing::Point(559, 538);
 			this->loginTextbox->Name = L"loginTextbox";
-			this->loginTextbox->Size = System::Drawing::Size(390, 49);
+			this->loginTextbox->Size = System::Drawing::Size(390, 41);
 			this->loginTextbox->TabIndex = 52;
 			this->loginTextbox->TextChanged += gcnew System::EventHandler(this, &Admin::loginTextbox_TextChanged);
 			// 
@@ -196,7 +196,7 @@ namespace CCasino {
 			this->label4->ForeColor = System::Drawing::Color::White;
 			this->label4->Location = System::Drawing::Point(488, 495);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(73, 29);
+			this->label4->Size = System::Drawing::Size(57, 24);
 			this->label4->TabIndex = 54;
 			this->label4->Text = L"Login";
 			// 
@@ -209,7 +209,7 @@ namespace CCasino {
 			this->balanceLable->ForeColor = System::Drawing::Color::White;
 			this->balanceLable->Location = System::Drawing::Point(487, 608);
 			this->balanceLable->Name = L"balanceLable";
-			this->balanceLable->Size = System::Drawing::Size(100, 29);
+			this->balanceLable->Size = System::Drawing::Size(78, 24);
 			this->balanceLable->TabIndex = 57;
 			this->balanceLable->Text = L"Balance";
 			this->balanceLable->Visible = false;
@@ -218,7 +218,7 @@ namespace CCasino {
 			// 
 			this->balancePicture->BackColor = System::Drawing::Color::Transparent;
 			this->balancePicture->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"balancePicture.Image")));
-			this->balancePicture->Location = System::Drawing::Point(492, 650);
+			this->balancePicture->Location = System::Drawing::Point(493, 646);
 			this->balancePicture->MaximumSize = System::Drawing::Size(47, 50);
 			this->balancePicture->Name = L"balancePicture";
 			this->balancePicture->Size = System::Drawing::Size(47, 50);
@@ -234,7 +234,7 @@ namespace CCasino {
 			this->balanceTextbox->Location = System::Drawing::Point(558, 651);
 			this->balanceTextbox->MaximumSize = System::Drawing::Size(464, 49);
 			this->balanceTextbox->Name = L"balanceTextbox";
-			this->balanceTextbox->Size = System::Drawing::Size(391, 49);
+			this->balanceTextbox->Size = System::Drawing::Size(391, 41);
 			this->balanceTextbox->TabIndex = 55;
 			this->balanceTextbox->Visible = false;
 			this->balanceTextbox->TextChanged += gcnew System::EventHandler(this, &Admin::balanceTextbox_TextChanged);
@@ -261,7 +261,7 @@ namespace CCasino {
 			this->errorLabel->ForeColor = System::Drawing::Color::Red;
 			this->errorLabel->Location = System::Drawing::Point(966, 518);
 			this->errorLabel->Name = L"errorLabel";
-			this->errorLabel->Size = System::Drawing::Size(453, 84);
+			this->errorLabel->Size = System::Drawing::Size(371, 72);
 			this->errorLabel->TabIndex = 59;
 			this->errorLabel->Text = L"Ошибка, такой Логин не \r\nсуществует";
 			this->errorLabel->Visible = false;
@@ -273,7 +273,7 @@ namespace CCasino {
 			this->successLabel->ForeColor = System::Drawing::Color::LimeGreen;
 			this->successLabel->Location = System::Drawing::Point(966, 750);
 			this->successLabel->Name = L"successLabel";
-			this->successLabel->Size = System::Drawing::Size(315, 42);
+			this->successLabel->Size = System::Drawing::Size(262, 36);
 			this->successLabel->TabIndex = 60;
 			this->successLabel->Text = L"Баланс изменен.";
 			this->successLabel->Visible = false;
