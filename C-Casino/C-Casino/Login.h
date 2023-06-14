@@ -394,6 +394,10 @@ namespace CCasino {
 	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void loginTextField_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (loginTextField->Text[loginTextField->TextLength - 1] == ' ') {
+			loginTextField->Text = loginTextField->Text->Remove(loginTextField->TextLength - 1);
+			loginTextField->Select(loginTextField->TextLength, 0);
+		}
 	}
 	private: System::Void label1_Click_2(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -504,6 +508,12 @@ namespace CCasino {
 				MainScreen^ mainScreen = gcnew MainScreen();
 				mainScreen->userIndex = returnId();				//номер пользователя в файле
 				fillBalanceVector(&balances);
+				if (login == "admin") {
+					mainScreen->isAdmin = true;
+				}
+				else {
+					mainScreen->isAdmin = false;
+				}
 				mainScreen->userBalance = balances.at(mainScreen->userIndex); //баланс пользователся по номеру из файла
 				cout << mainScreen->userBalance << " баланс текущего пользователя!\n";
 				mainScreen->Show();

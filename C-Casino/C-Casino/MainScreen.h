@@ -2,6 +2,7 @@
 #include "RandomGenerator.h"
 #include "RouletteBet.h"
 #include "LogOut.h"
+#include "OrelOrReshka.h"
 
 #include <iostream>
 #include <vector>
@@ -16,9 +17,7 @@ namespace CCasino {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// ������ ��� MainScreen
-	/// </summary>
+
 	public ref class MainScreen : public System::Windows::Forms::Form
 	{
 	public:
@@ -36,10 +35,32 @@ namespace CCasino {
 	private: System::Windows::Forms::Label^ currentBetLabel;
 
 	public:
-		int userBalance;
 	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
+	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::Panel^ panel2;
+	private: System::Windows::Forms::PictureBox^ rouletteIcon;
+	private: System::Windows::Forms::Button^ rouletteButton;
+	private: System::Windows::Forms::Panel^ panel3;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::PictureBox^ coinIcon;
+
+	private: System::Windows::Forms::Panel^ panel4;
+	private: System::Windows::Forms::Button^ volumeButton;
+
+	private: System::Windows::Forms::PictureBox^ volumePicture;
+
+	private: System::Windows::Forms::Panel^ panel5;
+	private: System::Windows::Forms::PictureBox^ menuIcon;
+	private: System::Windows::Forms::Timer^ menuTimer;
+
 	public:
 		int userIndex;
+		bool menuExpand = false;
+		bool isPlaying;
+		int userBalance;
+	private: System::Windows::Forms::Timer^ updateTimer;
+	public:
+
 
 	protected:
 		/// <summary>
@@ -213,12 +234,34 @@ namespace CCasino {
 			   this->betTextLabel = (gcnew System::Windows::Forms::Label());
 			   this->currentBetLabel = (gcnew System::Windows::Forms::Label());
 			   this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			   this->panel1 = (gcnew System::Windows::Forms::Panel());
+			   this->menuIcon = (gcnew System::Windows::Forms::PictureBox());
+			   this->panel2 = (gcnew System::Windows::Forms::Panel());
+			   this->rouletteButton = (gcnew System::Windows::Forms::Button());
+			   this->rouletteIcon = (gcnew System::Windows::Forms::PictureBox());
+			   this->panel3 = (gcnew System::Windows::Forms::Panel());
+			   this->button1 = (gcnew System::Windows::Forms::Button());
+			   this->coinIcon = (gcnew System::Windows::Forms::PictureBox());
+			   this->panel5 = (gcnew System::Windows::Forms::Panel());
+			   this->panel4 = (gcnew System::Windows::Forms::Panel());
+			   this->volumeButton = (gcnew System::Windows::Forms::Button());
+			   this->volumePicture = (gcnew System::Windows::Forms::PictureBox());
+			   this->menuTimer = (gcnew System::Windows::Forms::Timer(this->components));
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->redChipPictureBox))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->blueChipPictureBox))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->yellowChipPictureBox))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->greenChipPictureBox))->BeginInit();
+			   this->flowLayoutPanel1->SuspendLayout();
+			   this->panel1->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuIcon))->BeginInit();
+			   this->panel2->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rouletteIcon))->BeginInit();
+			   this->panel3->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->coinIcon))->BeginInit();
+			   this->panel4->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->volumePicture))->BeginInit();
 			   this->SuspendLayout();
 			   // 
 			   // betButton1
@@ -1223,7 +1266,7 @@ namespace CCasino {
 			   this->redChipBetText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
 			   this->redChipBetText->ForeColor = System::Drawing::Color::White;
-			   this->redChipBetText->Location = System::Drawing::Point(384, 514);
+			   this->redChipBetText->Location = System::Drawing::Point(384, 516);
 			   this->redChipBetText->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->redChipBetText->Name = L"redChipBetText";
 			   this->redChipBetText->Size = System::Drawing::Size(51, 36);
@@ -1237,7 +1280,7 @@ namespace CCasino {
 			   this->blueChipBetText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
 			   this->blueChipBetText->ForeColor = System::Drawing::Color::White;
-			   this->blueChipBetText->Location = System::Drawing::Point(478, 514);
+			   this->blueChipBetText->Location = System::Drawing::Point(478, 516);
 			   this->blueChipBetText->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->blueChipBetText->Name = L"blueChipBetText";
 			   this->blueChipBetText->Size = System::Drawing::Size(51, 36);
@@ -1330,11 +1373,162 @@ namespace CCasino {
 			   // 
 			   // flowLayoutPanel1
 			   // 
+			   this->flowLayoutPanel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"flowLayoutPanel1.BackgroundImage")));
+			   this->flowLayoutPanel1->Controls->Add(this->panel1);
+			   this->flowLayoutPanel1->Controls->Add(this->panel2);
+			   this->flowLayoutPanel1->Controls->Add(this->panel3);
+			   this->flowLayoutPanel1->Controls->Add(this->panel5);
+			   this->flowLayoutPanel1->Controls->Add(this->panel4);
 			   this->flowLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Left;
 			   this->flowLayoutPanel1->Location = System::Drawing::Point(0, 0);
+			   this->flowLayoutPanel1->MaximumSize = System::Drawing::Size(232, 0);
+			   this->flowLayoutPanel1->MinimumSize = System::Drawing::Size(63, 0);
 			   this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
-			   this->flowLayoutPanel1->Size = System::Drawing::Size(50, 613);
+			   this->flowLayoutPanel1->Size = System::Drawing::Size(63, 613);
 			   this->flowLayoutPanel1->TabIndex = 67;
+			   // 
+			   // panel1
+			   // 
+			   this->panel1->BackColor = System::Drawing::Color::Transparent;
+			   this->panel1->Controls->Add(this->menuIcon);
+			   this->panel1->Location = System::Drawing::Point(3, 3);
+			   this->panel1->Name = L"panel1";
+			   this->panel1->Size = System::Drawing::Size(229, 100);
+			   this->panel1->TabIndex = 0;
+			   // 
+			   // menuIcon
+			   // 
+			   this->menuIcon->BackColor = System::Drawing::Color::Transparent;
+			   this->menuIcon->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"menuIcon.BackgroundImage")));
+			   this->menuIcon->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			   this->menuIcon->Location = System::Drawing::Point(3, 25);
+			   this->menuIcon->Name = L"menuIcon";
+			   this->menuIcon->Size = System::Drawing::Size(54, 54);
+			   this->menuIcon->TabIndex = 69;
+			   this->menuIcon->TabStop = false;
+			   this->menuIcon->Click += gcnew System::EventHandler(this, &MainScreen::menuIcon_Click);
+			   // 
+			   // panel2
+			   // 
+			   this->panel2->BackColor = System::Drawing::Color::Transparent;
+			   this->panel2->Controls->Add(this->rouletteButton);
+			   this->panel2->Controls->Add(this->rouletteIcon);
+			   this->panel2->Location = System::Drawing::Point(3, 109);
+			   this->panel2->Name = L"panel2";
+			   this->panel2->Size = System::Drawing::Size(229, 54);
+			   this->panel2->TabIndex = 1;
+			   // 
+			   // rouletteButton
+			   // 
+			   this->rouletteButton->BackColor = System::Drawing::Color::Transparent;
+			   this->rouletteButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->rouletteButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(204)));
+			   this->rouletteButton->ForeColor = System::Drawing::Color::White;
+			   this->rouletteButton->Location = System::Drawing::Point(60, 0);
+			   this->rouletteButton->Name = L"rouletteButton";
+			   this->rouletteButton->Size = System::Drawing::Size(166, 54);
+			   this->rouletteButton->TabIndex = 68;
+			   this->rouletteButton->Text = L"Рулетка";
+			   this->rouletteButton->UseVisualStyleBackColor = false;
+			   // 
+			   // rouletteIcon
+			   // 
+			   this->rouletteIcon->BackColor = System::Drawing::Color::Transparent;
+			   this->rouletteIcon->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"rouletteIcon.BackgroundImage")));
+			   this->rouletteIcon->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			   this->rouletteIcon->Location = System::Drawing::Point(3, 0);
+			   this->rouletteIcon->Name = L"rouletteIcon";
+			   this->rouletteIcon->Size = System::Drawing::Size(54, 54);
+			   this->rouletteIcon->TabIndex = 68;
+			   this->rouletteIcon->TabStop = false;
+			   // 
+			   // panel3
+			   // 
+			   this->panel3->BackColor = System::Drawing::Color::Transparent;
+			   this->panel3->Controls->Add(this->button1);
+			   this->panel3->Controls->Add(this->coinIcon);
+			   this->panel3->Location = System::Drawing::Point(3, 169);
+			   this->panel3->Name = L"panel3";
+			   this->panel3->Size = System::Drawing::Size(229, 54);
+			   this->panel3->TabIndex = 68;
+			   // 
+			   // button1
+			   // 
+			   this->button1->BackColor = System::Drawing::Color::Transparent;
+			   this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(204)));
+			   this->button1->ForeColor = System::Drawing::Color::White;
+			   this->button1->Location = System::Drawing::Point(60, 0);
+			   this->button1->Name = L"button1";
+			   this->button1->Size = System::Drawing::Size(166, 54);
+			   this->button1->TabIndex = 68;
+			   this->button1->Text = L"Монетка";
+			   this->button1->UseVisualStyleBackColor = false;
+			   this->button1->Click += gcnew System::EventHandler(this, &MainScreen::button1_Click);
+			   // 
+			   // coinIcon
+			   // 
+			   this->coinIcon->BackColor = System::Drawing::Color::Transparent;
+			   this->coinIcon->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"coinIcon.BackgroundImage")));
+			   this->coinIcon->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			   this->coinIcon->Location = System::Drawing::Point(3, 0);
+			   this->coinIcon->Name = L"coinIcon";
+			   this->coinIcon->Size = System::Drawing::Size(54, 54);
+			   this->coinIcon->TabIndex = 68;
+			   this->coinIcon->TabStop = false;
+			   this->coinIcon->Click += gcnew System::EventHandler(this, &MainScreen::coinIcon_Click);
+			   // 
+			   // panel5
+			   // 
+			   this->panel5->BackColor = System::Drawing::Color::Transparent;
+			   this->panel5->Location = System::Drawing::Point(3, 229);
+			   this->panel5->Name = L"panel5";
+			   this->panel5->Size = System::Drawing::Size(226, 267);
+			   this->panel5->TabIndex = 69;
+			   // 
+			   // panel4
+			   // 
+			   this->panel4->BackColor = System::Drawing::Color::Transparent;
+			   this->panel4->Controls->Add(this->volumeButton);
+			   this->panel4->Controls->Add(this->volumePicture);
+			   this->panel4->Location = System::Drawing::Point(3, 502);
+			   this->panel4->Name = L"panel4";
+			   this->panel4->Size = System::Drawing::Size(229, 54);
+			   this->panel4->TabIndex = 69;
+			   // 
+			   // volumeButton
+			   // 
+			   this->volumeButton->BackColor = System::Drawing::Color::Transparent;
+			   this->volumeButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->volumeButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(204)));
+			   this->volumeButton->ForeColor = System::Drawing::Color::White;
+			   this->volumeButton->Location = System::Drawing::Point(63, 0);
+			   this->volumeButton->Name = L"volumeButton";
+			   this->volumeButton->Size = System::Drawing::Size(166, 54);
+			   this->volumeButton->TabIndex = 68;
+			   this->volumeButton->Text = L"Звук";
+			   this->volumeButton->UseVisualStyleBackColor = false;
+			   this->volumeButton->Click += gcnew System::EventHandler(this, &MainScreen::volumeButton_Click);
+			   // 
+			   // volumePicture
+			   // 
+			   this->volumePicture->BackColor = System::Drawing::Color::Transparent;
+			   this->volumePicture->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"volumePicture.BackgroundImage")));
+			   this->volumePicture->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			   this->volumePicture->Location = System::Drawing::Point(3, 0);
+			   this->volumePicture->Name = L"volumePicture";
+			   this->volumePicture->Size = System::Drawing::Size(54, 54);
+			   this->volumePicture->TabIndex = 68;
+			   this->volumePicture->TabStop = false;
+			   this->volumePicture->Click += gcnew System::EventHandler(this, &MainScreen::volumePicture_Click);
+			   // 
+			   // menuTimer
+			   // 
+			   this->menuTimer->Interval = 10;
+			   this->menuTimer->Tick += gcnew System::EventHandler(this, &MainScreen::menuTimer_Tick);
 			   // 
 			   // MainScreen
 			   // 
@@ -1424,6 +1618,15 @@ namespace CCasino {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->blueChipPictureBox))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->yellowChipPictureBox))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->greenChipPictureBox))->EndInit();
+			   this->flowLayoutPanel1->ResumeLayout(false);
+			   this->panel1->ResumeLayout(false);
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuIcon))->EndInit();
+			   this->panel2->ResumeLayout(false);
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rouletteIcon))->EndInit();
+			   this->panel3->ResumeLayout(false);
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->coinIcon))->EndInit();
+			   this->panel4->ResumeLayout(false);
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->volumePicture))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
 
@@ -1437,14 +1640,28 @@ namespace CCasino {
 		   int currentBet = 0;
 		   int chipBet;
 		   Image^ originalWheel = Image::FromFile("rouletteWheel.png");
+		   String^ filePath = "audio/BlueMoon.wav";
+		   System::Media::SoundPlayer^ player = gcnew System::Media::SoundPlayer(filePath);
+		   
 
 	private: System::Void MainScreen_Load(System::Object^ sender, System::EventArgs^ e) {
 		std::cout << "User id: " << userIndex << "\n";
 		this->BackgroundImage = Image::FromFile("img/greenBackground.jpg");
 		pictureBox1->BackgroundImage = Image::FromFile("rouletteWheel.png");
+		rouletteIcon->BackgroundImage = Image::FromFile("img/rouletteIcon.png");
+		menuIcon->BackgroundImage = Image::FromFile("img/menuIcon.png");
+		volumeButton->BackgroundImage = Image::FromFile("img/volumeIcon.png");
+		betButtonZero->BackgroundImage = Image::FromFile("img/zeroBorderBt.png");
+		redChipPictureBox->BackgroundImage = Image::FromFile("img/redChip.png");
+		yellowChipPictureBox->BackgroundImage = Image::FromFile("img/yellowChip.png");
+		greenChipPictureBox->BackgroundImage = Image::FromFile("img/greenChip.png");
+		blueChipPictureBox->BackgroundImage = Image::FromFile("img/blueChip.png");
+		coinIcon->BackgroundImage = Image::FromFile("img/coinIcon.png");
 		userBalanceText->Text = "" + userBalance;
 		currentBetLabel->Text = "" + 0;
-		playMusic();
+		player->PlayLooping();
+		isPlaying = true;
+		updateTimer->Stop();
 	}
 
 	private: System::Void exit_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1986,5 +2203,62 @@ namespace CCasino {
 			   System::Media::SoundPlayer^ player = gcnew System::Media::SoundPlayer(filePath);
 			   player->PlayLooping();
 		   }
-	};
+	private: System::Void menuTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+		if (menuExpand) {
+			flowLayoutPanel1->Width -= 10;
+			if (flowLayoutPanel1->Width == flowLayoutPanel1->MinimumSize.Width) {
+				menuExpand = false;
+				menuTimer->Stop();
+			}
+		}
+		else {
+			flowLayoutPanel1->Width += 10;
+			if (flowLayoutPanel1->Width == flowLayoutPanel1->MaximumSize.Width) {
+				menuExpand = true;
+				menuTimer->Stop();
+			}
+		}
+	}
+	private: System::Void menuIcon_Click(System::Object^ sender, System::EventArgs^ e) {
+		menuTimer->Start();
+	}
+	private: System::Void volumePicture_Click(System::Object^ sender, System::EventArgs^ e) {
+		soundControl();
+	}
+
+	void soundControl() {
+		if (isPlaying) {
+			player->Stop();
+			isPlaying = false;
+		}
+		else {
+			player->PlayLooping();
+			isPlaying = true;
+		}
+	}
+	private: System::Void volumeButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		soundControl();
+	}
+	private: System::Void coinIcon_Click(System::Object^ sender, System::EventArgs^ e) {
+		coinFlipNav();
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		coinFlipNav();
+	}
+	void coinFlipNav() {
+		OrelOrReshka^ coinScreen = gcnew OrelOrReshka();
+		coinScreen->userId = userIndex;
+		coinScreen->userBalance = userBalance;
+		coinScreen->otherform = this;
+
+		System::Windows::Forms::DialogResult result = coinScreen->ShowDialog();
+
+		if (result == System::Windows::Forms::DialogResult::OK)
+		{
+			userBalance = coinScreen->NumberToPass;
+			userBalanceText->Text = "" + userBalance;
+		}
+		this->Show();
+	}
+};
 }

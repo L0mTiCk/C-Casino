@@ -123,6 +123,7 @@
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="LogOut.cpp" />
     <ClCompile Include="MainScreen.cpp" />
+    <ClCompile Include="OrelOrReshka.cpp" />
     <ClCompile Include="RandomGenerator.cpp" />
     <ClCompile Include="RouletteBet.cpp" />
     <ClCompile Include="SignIn.cpp" />
@@ -134,6 +135,9 @@
     </ClInclude>
     <ClInclude Include="LogOut.h" />
     <ClInclude Include="MainScreen.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OrelOrReshka.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="RandomGenerator.h" />
@@ -153,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainScreen.resx">
       <DependentUpon>MainScreen.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrelOrReshka.resx">
+      <DependentUpon>OrelOrReshka.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
   CCasino.Admin.resources - Embedded, ContainedInManifestFile, 
   CCasino.Login.resources - Embedded, ContainedInManifestFile, 
   CCasino.MainScreen.resources - Embedded, ContainedInManifestFile, 
+  CCasino.OrelOrReshka.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly C-Casino, Version=0.0.*, Culture=Инвариантный язык (Инвариантная страна): 
 	hash=SHA1, flags=PublicKey
@@ -22,12 +23,29 @@ Class CCasino.Admin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Fields:
     Boolean isExist : Public
     Int32 userId : Public
-Class CCasino.MainScreen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+Class CCasino.OrelOrReshka: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Int32 userBalance : Public
+    Boolean isPlaying : Public
+    Boolean menuExpand : Public
+    Int32 numberToPass : Public
+    Int32 userId : Public
+    System.Windows.Forms.Form otherform : Public
+  Properties:
+    Int32 NumberToPass 'get ' : 
+  Methods:
+    get_NumberToPass(): PrivateScope, Public, HideBySig, SpecialName
+Class CCasino.MainScreen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
     Int32 userIndex : Public
+    Boolean menuExpand : Public
+    Boolean isPlaying : Public
+    Int32 userBalance : Public
+    Boolean isAdmin : Public
     System.Windows.Forms.PictureBox pictureBox1 : Public
   Methods:
     RotateImage(Image, Single): PrivateScope, Public, HideBySig
