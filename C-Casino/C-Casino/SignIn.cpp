@@ -59,14 +59,14 @@ void fillVector(string str, vector<string>* logins, vector<string>* passwords) {
 	for (int i = 0; i < str.size(); i++) {
 		if (i == spaceIndex) {
 			logins->push_back(word);
-			cout << word;
+			//cout << word;
 			word = "";
 		}
 		else {
 			word += str[i];
 		}
 	}
-	cout << " " << word << endl;
+	//cout << " " << word << endl;
 	passwords->push_back(word);
 
 }

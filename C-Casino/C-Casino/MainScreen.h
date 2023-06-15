@@ -58,7 +58,8 @@ namespace CCasino {
 		bool menuExpand = false;
 		bool isPlaying;
 		int userBalance;
-	private: System::Windows::Forms::Timer^ updateTimer;
+		bool isAdmin;
+		Color chipColor;
 	public:
 
 
@@ -1424,7 +1425,7 @@ namespace CCasino {
 			   this->rouletteButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->rouletteButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
-			   this->rouletteButton->ForeColor = System::Drawing::Color::White;
+			   this->rouletteButton->ForeColor = System::Drawing::Color::ForestGreen;
 			   this->rouletteButton->Location = System::Drawing::Point(60, 0);
 			   this->rouletteButton->Name = L"rouletteButton";
 			   this->rouletteButton->Size = System::Drawing::Size(166, 54);
@@ -1645,7 +1646,7 @@ namespace CCasino {
 		   
 
 	private: System::Void MainScreen_Load(System::Object^ sender, System::EventArgs^ e) {
-		std::cout << "User id: " << userIndex << "\n";
+		//std::cout << "User id: " << userIndex << "\n";
 		this->BackgroundImage = Image::FromFile("img/greenBackground.jpg");
 		pictureBox1->BackgroundImage = Image::FromFile("rouletteWheel.png");
 		rouletteIcon->BackgroundImage = Image::FromFile("img/rouletteIcon.png");
@@ -1661,7 +1662,8 @@ namespace CCasino {
 		currentBetLabel->Text = "" + 0;
 		player->PlayLooping();
 		isPlaying = true;
-		updateTimer->Stop();
+		chipColor = Color::Red;
+		chipBet = 10;
 	}
 
 	private: System::Void exit_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1734,10 +1736,9 @@ namespace CCasino {
 			finalTurn = randomSin();
 			pictureBox1->Image = RotateImage(pictureBox1->Image, finalTurn);
 			winner = checkRouletteAngle(finalTurn);
-			std::cout << "\nWinner - " << winner;
+			//std::cout << "\nWinner - " << winner;
 			winNumLable->Text = "" + winner;
 			userBalance += checkWin(winner);
-			std::cout << "\n~~~~~~~~~~~~~~~\n������� ����� ��������: " << checkWin(winner);
 			setCurrentBetText(currentBet);
 			userBalanceText->Text = "" + userBalance;
 			printVector();
@@ -1779,6 +1780,7 @@ namespace CCasino {
 		blueChipChange(0);
 		yellowChipChange(0);
 		greenChipChange(0);
+		chipColor = Color::Red;
 	}
 
 	private: System::Void blueChipPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1787,6 +1789,7 @@ namespace CCasino {
 		blueChipChange(1);
 		yellowChipChange(0);
 		greenChipChange(0);
+		chipColor = Color::Blue;
 	}
 
 	private: System::Void yellowChipPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1795,6 +1798,7 @@ namespace CCasino {
 		blueChipChange(0);
 		yellowChipChange(1);
 		greenChipChange(0);
+		chipColor = Color::Yellow;
 	}
 
 	private: System::Void greenChipPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1803,6 +1807,7 @@ namespace CCasino {
 		blueChipChange(0);
 		yellowChipChange(0);
 		greenChipChange(1);
+		chipColor = Color::ForestGreen;
 	}
 
 		   void setCurrentBetText(int bet) {
@@ -1810,220 +1815,400 @@ namespace CCasino {
 		   }
 
 	private: System::Void betButton1_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton1->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton1->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton1->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton1->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton2_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton2->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton2->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton2->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton2->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton3_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton3->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton3->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton3->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton3->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton4_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton4->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton4->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton4->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton4->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton5_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton5->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton5->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton5->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton5->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton6_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton6->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton6->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton6->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton6->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton7_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton7->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton7->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton7->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton7->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton8_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton8->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton8->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton8->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton8->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton9_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton9->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton9->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton9->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton9->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton10_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton10->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton10->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton10->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton10->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton11_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton11->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton11->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton11->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton11->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton12_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton12->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton12->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton12->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton12->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton13_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton13->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton13->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton13->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton13->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton14_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton14->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton14->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton14->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton14->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton15_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton15->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton15->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton15->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton15->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton16_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton16->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton16->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton16->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton16->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton17_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton17->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton17->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton17->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton17->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton18_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton18->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton18->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton18->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton18->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton19_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton19->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton19->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton19->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton19->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton20_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton20->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton20->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton20->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton20->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton21_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton21->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton21->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton21->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton21->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton22_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton22->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton22->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton22->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton22->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton23_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton23->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton23->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton23->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton23->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton24_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton24->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton24->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton24->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton24->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton25_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton25->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton25->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton25->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton25->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton26_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton26->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton26->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton26->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton26->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton27_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton27->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton27->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton27->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton27->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton28_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton28->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton28->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton28->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton28->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton29_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton29->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton29->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton29->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton29->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton30_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton30->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton30->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton30->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton30->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton31_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton31->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton31->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton31->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton31->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton32_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton32->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton32->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton32->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton32->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton33_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton33->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton33->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton33->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton33->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton34_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton34->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton34->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton34->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton34->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton35_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton35->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton35->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton35->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton35->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 	private: System::Void betButton36_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(betButton36->TabIndex + 1, chipBet);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButton36->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(betButton36->TabIndex + 1, chipBet);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButton36->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   /*
 		   ����� ��� ����������� ���������� ����� ��� ������ :
@@ -2043,107 +2228,172 @@ namespace CCasino {
 	   */
 
 	private: System::Void betButtonZero_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(100, chipBet);
-		setBetBoolean(13);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButtonZero->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(100, chipBet);
+			setBetBoolean(13);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButtonZero->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   //������ 12
 	private: System::Void betFirst12_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(112, chipBet);
-		setBetBoolean(7);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betFirst12->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(112, chipBet);
+			setBetBoolean(7);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betFirst12->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   //������ 12
 	private: System::Void betSecond12_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(124, chipBet);
-		setBetBoolean(8);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betSecond12->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(124, chipBet);
+			setBetBoolean(8);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betSecond12->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   //������ 12
 	private: System::Void betThird12_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(136, chipBet);
-		setBetBoolean(9);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betThird12->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(136, chipBet);
+			setBetBoolean(9);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betThird12->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   //������ ����� 
 	private: System::Void betLine1_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(201, chipBet);
-		setBetBoolean(10);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betLine1->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(201, chipBet);
+			setBetBoolean(10);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betLine1->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   //������ �����
 	private: System::Void betLine2_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(202, chipBet);
-		setBetBoolean(11);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betLine2->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(202, chipBet);
+			setBetBoolean(11);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betLine2->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   //������ �����
 	private: System::Void betLine3_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(203, chipBet);
-		setBetBoolean(12);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betLine3->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(203, chipBet);
+			setBetBoolean(12);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betLine3->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   //�������
 	private: System::Void betButtonRed_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(300, chipBet);
-		setBetBoolean(1);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButtonRed->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(300, chipBet);
+			setBetBoolean(1);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButtonRed->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   //������
 	private: System::Void betButtonBlack_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(400, chipBet);
-		setBetBoolean(2);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButtonBlack->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(400, chipBet);
+			setBetBoolean(2);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButtonBlack->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   //������
 	private: System::Void betButtonEven_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (chipBet + currentBet < userBalance) {
 		addToVectors(102, chipBet);
 		setBetBoolean(3);
 		currentBet += chipBet;
 		setCurrentBetText(currentBet);
-		betButtonEven->ForeColor = Color::Blue;
+		betButtonEven->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   //��������
 	private: System::Void betButtonOdd_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(103, chipBet);
-		setBetBoolean(4);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButtonOdd->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(103, chipBet);
+			setBetBoolean(4);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButtonOdd->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   //������ ��������
 	private: System::Void betButtonFirstHalf_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(110, chipBet);
-		setBetBoolean(5);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButtonFirstHalf->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(110, chipBet);
+			setBetBoolean(5);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButtonFirstHalf->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 		   //������ ��������
 	private: System::Void betButtonSecondHalf_Click(System::Object^ sender, System::EventArgs^ e) {
-		addToVectors(120, chipBet);
-		setBetBoolean(6);
-		currentBet += chipBet;
-		setCurrentBetText(currentBet);
-		betButtonSecondHalf->ForeColor = Color::Blue;
+		if (chipBet + currentBet < userBalance) {
+			addToVectors(120, chipBet);
+			setBetBoolean(6);
+			currentBet += chipBet;
+			setCurrentBetText(currentBet);
+			betButtonSecondHalf->ForeColor = chipColor;
+		}
+		else {
+			MessageBox::Show("You don't have enough money!");
+		}
 	}
 
 		   //����������� � ����� ����� ��������
@@ -2250,6 +2500,7 @@ namespace CCasino {
 		coinScreen->userId = userIndex;
 		coinScreen->userBalance = userBalance;
 		coinScreen->otherform = this;
+		player->Stop();
 
 		System::Windows::Forms::DialogResult result = coinScreen->ShowDialog();
 
@@ -2259,6 +2510,7 @@ namespace CCasino {
 			userBalanceText->Text = "" + userBalance;
 		}
 		this->Show();
+		player->PlayLooping();
 	}
 };
 }

@@ -515,7 +515,7 @@ namespace CCasino {
 					mainScreen->isAdmin = false;
 				}
 				mainScreen->userBalance = balances.at(mainScreen->userIndex); //баланс пользователся по номеру из файла
-				cout << mainScreen->userBalance << " баланс текущего пользователя!\n";
+				//cout << mainScreen->userBalance << " баланс текущего пользователя!\n";
 				mainScreen->Show();
 				//adminScreen->Show();
 				Login::Hide();

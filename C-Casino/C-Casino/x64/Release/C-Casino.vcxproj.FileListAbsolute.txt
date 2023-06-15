@@ -1,0 +1,7 @@
+C:\CourseProject\C-Casino\C-Casino\C-Casino\x64\Release\C-Casino.vcxproj.AssemblyReference.cache
+C:\CourseProject\C-Casino\C-Casino\C-Casino\x64\Release\C-Casino.vcxproj.SuggestedBindingRedirects.cache
+C:\CourseProject\C-Casino\C-Casino\C-Casino\x64\Release\CCasino.Admin.resources
+C:\CourseProject\C-Casino\C-Casino\C-Casino\x64\Release\CCasino.Login.resources
+C:\CourseProject\C-Casino\C-Casino\C-Casino\x64\Release\CCasino.MainScreen.resources
+C:\CourseProject\C-Casino\C-Casino\C-Casino\x64\Release\CCasino.OrelOrReshka.resources
+C:\CourseProject\C-Casino\C-Casino\C-Casino\x64\Release\C-Casino.vcxproj.GenerateResource.cache

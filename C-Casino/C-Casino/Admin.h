@@ -335,7 +335,7 @@ namespace CCasino {
 				successLabel->Visible = false;
 				isExist = true;
 				userId = returnId();
-				cout << userId << endl;
+				//cout << userId << endl;
 			}
 			else {
 				errorLabel->Visible = true;

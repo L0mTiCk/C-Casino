@@ -1,23 +1,21 @@
 ﻿  Login.cpp
-C:\CourseProject\C-Casino\C-Casino\C-Casino\OrelOrReshka.h(540,32): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1748,17): warning C4566: символ, представленный универсальным именем символа "\uFFFD", невозможно представить в текущей кодовой странице (1251)
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1668,32): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1720,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1728,58): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1729,24): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1735,69): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1743,57): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\OrelOrReshka.h(541,32): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1662,32): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1714,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1722,58): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1723,24): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1729,69): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1737,57): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
   MainScreen.cpp
-C:\CourseProject\C-Casino\C-Casino\C-Casino\OrelOrReshka.h(540,32): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1748,17): warning C4566: символ, представленный универсальным именем символа "\uFFFD", невозможно представить в текущей кодовой странице (1251)
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1668,32): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1720,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1728,58): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1729,24): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1735,69): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1743,57): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\OrelOrReshka.h(541,32): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1662,32): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1714,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1722,58): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1723,24): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1729,69): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\CourseProject\C-Casino\C-Casino\C-Casino\MainScreen.h(1737,57): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
   OrelOrReshka.cpp
-C:\CourseProject\C-Casino\C-Casino\C-Casino\OrelOrReshka.h(540,32): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\CourseProject\C-Casino\C-Casino\C-Casino\OrelOrReshka.h(541,32): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
   Создание кода...
   Admin.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   C-Casino.vcxproj -> C:\CourseProject\C-Casino\C-Casino\x64\Debug\C-Casino.exe

@@ -68,10 +68,10 @@ void clearVector() {
 }
 
 void printVector() {
-	std::cout << "Total bets = " << betFields.size();
-	std::cout << "\nBet fields: ";
-	for (int i = 0; i < betFields.size(); i++)
-		std::cout << betFields.at(i) << " ";
+	//std::cout << "Total bets = " << betFields.size();
+	//std::cout << "\nBet fields: ";
+	//for (int i = 0; i < betFields.size(); i++)
+		//std::cout << betFields.at(i) << " ";
 }
 
 int checkWin(int winNum) {

@@ -325,6 +325,7 @@ namespace CCasino {
 			// 
 			// flowLayoutPanel1
 			// 
+			this->flowLayoutPanel1->BackColor = System::Drawing::Color::ForestGreen;
 			this->flowLayoutPanel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"flowLayoutPanel1.BackgroundImage")));
 			this->flowLayoutPanel1->Controls->Add(this->panel1);
 			this->flowLayoutPanel1->Controls->Add(this->panel2);
@@ -570,6 +571,9 @@ namespace CCasino {
 				menuTimer->Stop();
 			}
 		}
+	}
+	private: void coinFlip() {
+
 	}
 	private: System::Void menuIcon_Click(System::Object^ sender, System::EventArgs^ e) {
 		menuTimer->Start();

@@ -109,6 +109,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <SubSystem>
+      </SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

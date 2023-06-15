@@ -46,6 +46,7 @@ Class CCasino.MainScreen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Boolean isPlaying : Public
     Int32 userBalance : Public
     Boolean isAdmin : Public
+    System.Drawing.Color chipColor : Public
     System.Windows.Forms.PictureBox pictureBox1 : Public
   Methods:
     RotateImage(Image, Single): PrivateScope, Public, HideBySig
