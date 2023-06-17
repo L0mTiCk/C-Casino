@@ -48,8 +48,9 @@ namespace CCasino {
 	private: System::Windows::Forms::Button^ volumeButton;
 
 	private: System::Windows::Forms::PictureBox^ volumePicture;
+	private: System::Windows::Forms::Panel^ spacerPanel;
 
-	private: System::Windows::Forms::Panel^ panel5;
+
 	private: System::Windows::Forms::PictureBox^ menuIcon;
 	private: System::Windows::Forms::Timer^ menuTimer;
 
@@ -60,6 +61,15 @@ namespace CCasino {
 		int userBalance;
 		bool isAdmin;
 		Color chipColor;
+	private: System::Windows::Forms::Panel^ adminPanel;
+	public:
+	private: System::Windows::Forms::Panel^ panel6;
+	private: System::Windows::Forms::Button^ helpButton;
+	private: System::Windows::Forms::PictureBox^ helpIcon;
+
+	public:
+	private: System::Windows::Forms::Button^ adminButton;
+	private: System::Windows::Forms::PictureBox^ adminIcon;
 	public:
 
 
@@ -243,10 +253,16 @@ namespace CCasino {
 			   this->panel3 = (gcnew System::Windows::Forms::Panel());
 			   this->button1 = (gcnew System::Windows::Forms::Button());
 			   this->coinIcon = (gcnew System::Windows::Forms::PictureBox());
-			   this->panel5 = (gcnew System::Windows::Forms::Panel());
+			   this->adminPanel = (gcnew System::Windows::Forms::Panel());
+			   this->adminButton = (gcnew System::Windows::Forms::Button());
+			   this->adminIcon = (gcnew System::Windows::Forms::PictureBox());
+			   this->spacerPanel = (gcnew System::Windows::Forms::Panel());
 			   this->panel4 = (gcnew System::Windows::Forms::Panel());
 			   this->volumeButton = (gcnew System::Windows::Forms::Button());
 			   this->volumePicture = (gcnew System::Windows::Forms::PictureBox());
+			   this->panel6 = (gcnew System::Windows::Forms::Panel());
+			   this->helpButton = (gcnew System::Windows::Forms::Button());
+			   this->helpIcon = (gcnew System::Windows::Forms::PictureBox());
 			   this->menuTimer = (gcnew System::Windows::Forms::Timer(this->components));
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -261,8 +277,12 @@ namespace CCasino {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rouletteIcon))->BeginInit();
 			   this->panel3->SuspendLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->coinIcon))->BeginInit();
+			   this->adminPanel->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->adminIcon))->BeginInit();
 			   this->panel4->SuspendLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->volumePicture))->BeginInit();
+			   this->panel6->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->helpIcon))->BeginInit();
 			   this->SuspendLayout();
 			   // 
 			   // betButton1
@@ -1149,13 +1169,18 @@ namespace CCasino {
 			   // 
 			   // spinButton
 			   // 
-			   this->spinButton->Location = System::Drawing::Point(511, 375);
+			   this->spinButton->BackColor = System::Drawing::Color::Transparent;
+			   this->spinButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->spinButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(204)));
+			   this->spinButton->ForeColor = System::Drawing::Color::White;
+			   this->spinButton->Location = System::Drawing::Point(559, 383);
 			   this->spinButton->Margin = System::Windows::Forms::Padding(2);
 			   this->spinButton->Name = L"spinButton";
-			   this->spinButton->Size = System::Drawing::Size(56, 19);
+			   this->spinButton->Size = System::Drawing::Size(227, 42);
 			   this->spinButton->TabIndex = 51;
-			   this->spinButton->Text = L"Spin";
-			   this->spinButton->UseVisualStyleBackColor = true;
+			   this->spinButton->Text = L"Вращать";
+			   this->spinButton->UseVisualStyleBackColor = false;
 			   this->spinButton->Click += gcnew System::EventHandler(this, &MainScreen::spinButton_Click);
 			   // 
 			   // pictureBox1
@@ -1378,8 +1403,10 @@ namespace CCasino {
 			   this->flowLayoutPanel1->Controls->Add(this->panel1);
 			   this->flowLayoutPanel1->Controls->Add(this->panel2);
 			   this->flowLayoutPanel1->Controls->Add(this->panel3);
-			   this->flowLayoutPanel1->Controls->Add(this->panel5);
+			   this->flowLayoutPanel1->Controls->Add(this->adminPanel);
+			   this->flowLayoutPanel1->Controls->Add(this->spacerPanel);
 			   this->flowLayoutPanel1->Controls->Add(this->panel4);
+			   this->flowLayoutPanel1->Controls->Add(this->panel6);
 			   this->flowLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Left;
 			   this->flowLayoutPanel1->Location = System::Drawing::Point(0, 0);
 			   this->flowLayoutPanel1->MaximumSize = System::Drawing::Size(232, 0);
@@ -1422,6 +1449,7 @@ namespace CCasino {
 			   // rouletteButton
 			   // 
 			   this->rouletteButton->BackColor = System::Drawing::Color::Transparent;
+			   this->rouletteButton->FlatAppearance->BorderSize = 0;
 			   this->rouletteButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->rouletteButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
@@ -1457,6 +1485,7 @@ namespace CCasino {
 			   // button1
 			   // 
 			   this->button1->BackColor = System::Drawing::Color::Transparent;
+			   this->button1->FlatAppearance->BorderSize = 0;
 			   this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
@@ -1481,20 +1510,59 @@ namespace CCasino {
 			   this->coinIcon->TabStop = false;
 			   this->coinIcon->Click += gcnew System::EventHandler(this, &MainScreen::coinIcon_Click);
 			   // 
-			   // panel5
+			   // adminPanel
 			   // 
-			   this->panel5->BackColor = System::Drawing::Color::Transparent;
-			   this->panel5->Location = System::Drawing::Point(3, 229);
-			   this->panel5->Name = L"panel5";
-			   this->panel5->Size = System::Drawing::Size(226, 267);
-			   this->panel5->TabIndex = 69;
+			   this->adminPanel->BackColor = System::Drawing::Color::Transparent;
+			   this->adminPanel->Controls->Add(this->adminButton);
+			   this->adminPanel->Controls->Add(this->adminIcon);
+			   this->adminPanel->Location = System::Drawing::Point(3, 229);
+			   this->adminPanel->Name = L"adminPanel";
+			   this->adminPanel->Size = System::Drawing::Size(229, 54);
+			   this->adminPanel->TabIndex = 70;
+			   // 
+			   // adminButton
+			   // 
+			   this->adminButton->BackColor = System::Drawing::Color::Transparent;
+			   this->adminButton->FlatAppearance->BorderSize = 0;
+			   this->adminButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->adminButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(204)));
+			   this->adminButton->ForeColor = System::Drawing::Color::White;
+			   this->adminButton->Location = System::Drawing::Point(60, 0);
+			   this->adminButton->Name = L"adminButton";
+			   this->adminButton->Size = System::Drawing::Size(166, 54);
+			   this->adminButton->TabIndex = 68;
+			   this->adminButton->Text = L"Администратор";
+			   this->adminButton->UseVisualStyleBackColor = false;
+			   this->adminButton->Click += gcnew System::EventHandler(this, &MainScreen::adminButton_Click);
+			   // 
+			   // adminIcon
+			   // 
+			   this->adminIcon->BackColor = System::Drawing::Color::Transparent;
+			   this->adminIcon->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"adminIcon.BackgroundImage")));
+			   this->adminIcon->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->adminIcon->Location = System::Drawing::Point(3, 0);
+			   this->adminIcon->Name = L"adminIcon";
+			   this->adminIcon->Size = System::Drawing::Size(54, 54);
+			   this->adminIcon->TabIndex = 68;
+			   this->adminIcon->TabStop = false;
+			   this->adminIcon->Click += gcnew System::EventHandler(this, &MainScreen::adminIcon_Click);
+			   // 
+			   // spacerPanel
+			   // 
+			   this->spacerPanel->BackColor = System::Drawing::Color::Transparent;
+			   this->spacerPanel->Location = System::Drawing::Point(3, 289);
+			   this->spacerPanel->Name = L"spacerPanel";
+			   this->spacerPanel->Size = System::Drawing::Size(226, 193);
+			   this->spacerPanel->TabIndex = 69;
 			   // 
 			   // panel4
 			   // 
 			   this->panel4->BackColor = System::Drawing::Color::Transparent;
 			   this->panel4->Controls->Add(this->volumeButton);
 			   this->panel4->Controls->Add(this->volumePicture);
-			   this->panel4->Location = System::Drawing::Point(3, 502);
+			   this->panel4->Dock = System::Windows::Forms::DockStyle::Bottom;
+			   this->panel4->Location = System::Drawing::Point(3, 488);
 			   this->panel4->Name = L"panel4";
 			   this->panel4->Size = System::Drawing::Size(229, 54);
 			   this->panel4->TabIndex = 69;
@@ -1502,6 +1570,7 @@ namespace CCasino {
 			   // volumeButton
 			   // 
 			   this->volumeButton->BackColor = System::Drawing::Color::Transparent;
+			   this->volumeButton->FlatAppearance->BorderSize = 0;
 			   this->volumeButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->volumeButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
@@ -1525,6 +1594,45 @@ namespace CCasino {
 			   this->volumePicture->TabIndex = 68;
 			   this->volumePicture->TabStop = false;
 			   this->volumePicture->Click += gcnew System::EventHandler(this, &MainScreen::volumePicture_Click);
+			   // 
+			   // panel6
+			   // 
+			   this->panel6->BackColor = System::Drawing::Color::Transparent;
+			   this->panel6->Controls->Add(this->helpButton);
+			   this->panel6->Controls->Add(this->helpIcon);
+			   this->panel6->Dock = System::Windows::Forms::DockStyle::Bottom;
+			   this->panel6->Location = System::Drawing::Point(3, 548);
+			   this->panel6->Name = L"panel6";
+			   this->panel6->Size = System::Drawing::Size(229, 54);
+			   this->panel6->TabIndex = 71;
+			   // 
+			   // helpButton
+			   // 
+			   this->helpButton->BackColor = System::Drawing::Color::Transparent;
+			   this->helpButton->FlatAppearance->BorderSize = 0;
+			   this->helpButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->helpButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(204)));
+			   this->helpButton->ForeColor = System::Drawing::Color::White;
+			   this->helpButton->Location = System::Drawing::Point(63, 0);
+			   this->helpButton->Name = L"helpButton";
+			   this->helpButton->Size = System::Drawing::Size(166, 54);
+			   this->helpButton->TabIndex = 68;
+			   this->helpButton->Text = L"Справка";
+			   this->helpButton->UseVisualStyleBackColor = false;
+			   this->helpButton->Click += gcnew System::EventHandler(this, &MainScreen::helpButton_Click);
+			   // 
+			   // helpIcon
+			   // 
+			   this->helpIcon->BackColor = System::Drawing::Color::Transparent;
+			   this->helpIcon->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"helpIcon.BackgroundImage")));
+			   this->helpIcon->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			   this->helpIcon->Location = System::Drawing::Point(3, 0);
+			   this->helpIcon->Name = L"helpIcon";
+			   this->helpIcon->Size = System::Drawing::Size(54, 54);
+			   this->helpIcon->TabIndex = 68;
+			   this->helpIcon->TabStop = false;
+			   this->helpIcon->Click += gcnew System::EventHandler(this, &MainScreen::helpIcon_Click);
 			   // 
 			   // menuTimer
 			   // 
@@ -1626,8 +1734,12 @@ namespace CCasino {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rouletteIcon))->EndInit();
 			   this->panel3->ResumeLayout(false);
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->coinIcon))->EndInit();
+			   this->adminPanel->ResumeLayout(false);
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->adminIcon))->EndInit();
 			   this->panel4->ResumeLayout(false);
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->volumePicture))->EndInit();
+			   this->panel6->ResumeLayout(false);
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->helpIcon))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
 
@@ -1647,6 +1759,10 @@ namespace CCasino {
 
 	private: System::Void MainScreen_Load(System::Object^ sender, System::EventArgs^ e) {
 		//std::cout << "User id: " << userIndex << "\n";
+		adminPanel->Visible = isAdmin;
+		if (!isAdmin) {
+			spacerPanel->Size = System::Drawing::Size(spacerPanel->Size.Width, 260);
+		}
 		this->BackgroundImage = Image::FromFile("img/greenBackground.jpg");
 		pictureBox1->BackgroundImage = Image::FromFile("rouletteWheel.png");
 		rouletteIcon->BackgroundImage = Image::FromFile("img/rouletteIcon.png");
@@ -1658,6 +1774,7 @@ namespace CCasino {
 		greenChipPictureBox->BackgroundImage = Image::FromFile("img/greenChip.png");
 		blueChipPictureBox->BackgroundImage = Image::FromFile("img/blueChip.png");
 		coinIcon->BackgroundImage = Image::FromFile("img/coinIcon.png");
+		helpIcon->BackgroundImage = Image::FromFile("img/helpIcon.png");
 		userBalanceText->Text = "" + userBalance;
 		currentBetLabel->Text = "" + 0;
 		player->PlayLooping();
@@ -1743,7 +1860,6 @@ namespace CCasino {
 			userBalanceText->Text = "" + userBalance;
 			printVector();
 			clearVector();
-			//������ � �����
 			setWhite();
 			setToFalse();
 			wheelTimer->Stop();
@@ -1815,7 +1931,7 @@ namespace CCasino {
 		   }
 
 	private: System::Void betButton1_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton1->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1826,7 +1942,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton2_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton2->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1837,7 +1953,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton3_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton3->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1848,7 +1964,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton4_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton4->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1859,7 +1975,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton5_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton5->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1870,7 +1986,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton6_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton6->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1881,7 +1997,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton7_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton7->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1892,7 +2008,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton8_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton8->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1903,7 +2019,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton9_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton9->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1914,7 +2030,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton10_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton10->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1925,7 +2041,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton11_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton11->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1936,7 +2052,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton12_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton12->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1947,7 +2063,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton13_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton13->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1958,7 +2074,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton14_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton14->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1969,7 +2085,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton15_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton15->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1980,7 +2096,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton16_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton16->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -1991,7 +2107,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton17_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton17->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2002,7 +2118,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton18_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton18->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2013,7 +2129,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton19_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton19->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2024,7 +2140,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton20_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton20->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2035,7 +2151,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton21_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton21->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2046,7 +2162,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton22_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton22->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2057,7 +2173,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton23_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton23->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2068,7 +2184,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton24_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton24->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2079,7 +2195,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton25_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton25->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2090,7 +2206,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton26_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton26->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2101,7 +2217,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton27_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton27->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2112,7 +2228,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton28_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton28->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2123,7 +2239,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton29_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton29->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2134,7 +2250,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton30_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton30->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2145,7 +2261,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton31_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton31->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2156,7 +2272,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton32_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton32->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2167,7 +2283,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton33_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton33->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2178,7 +2294,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton34_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton34->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2189,7 +2305,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton35_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton35->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2200,7 +2316,7 @@ namespace CCasino {
 		}
 	}
 	private: System::Void betButton36_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(betButton36->TabIndex + 1, chipBet);
 			currentBet += chipBet;
 			setCurrentBetText(currentBet);
@@ -2228,7 +2344,7 @@ namespace CCasino {
 	   */
 
 	private: System::Void betButtonZero_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(100, chipBet);
 			setBetBoolean(13);
 			currentBet += chipBet;
@@ -2241,7 +2357,7 @@ namespace CCasino {
 	}
 		   //������ 12
 	private: System::Void betFirst12_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(112, chipBet);
 			setBetBoolean(7);
 			currentBet += chipBet;
@@ -2254,7 +2370,7 @@ namespace CCasino {
 	}
 		   //������ 12
 	private: System::Void betSecond12_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(124, chipBet);
 			setBetBoolean(8);
 			currentBet += chipBet;
@@ -2267,7 +2383,7 @@ namespace CCasino {
 	}
 		   //������ 12
 	private: System::Void betThird12_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(136, chipBet);
 			setBetBoolean(9);
 			currentBet += chipBet;
@@ -2280,7 +2396,7 @@ namespace CCasino {
 	}
 		   //������ ����� 
 	private: System::Void betLine1_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(201, chipBet);
 			setBetBoolean(10);
 			currentBet += chipBet;
@@ -2293,7 +2409,7 @@ namespace CCasino {
 	}
 		   //������ �����
 	private: System::Void betLine2_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(202, chipBet);
 			setBetBoolean(11);
 			currentBet += chipBet;
@@ -2306,7 +2422,7 @@ namespace CCasino {
 	}
 		   //������ �����
 	private: System::Void betLine3_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(203, chipBet);
 			setBetBoolean(12);
 			currentBet += chipBet;
@@ -2319,7 +2435,7 @@ namespace CCasino {
 	}
 		   //�������
 	private: System::Void betButtonRed_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(300, chipBet);
 			setBetBoolean(1);
 			currentBet += chipBet;
@@ -2332,7 +2448,7 @@ namespace CCasino {
 	}
 		   //������
 	private: System::Void betButtonBlack_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(400, chipBet);
 			setBetBoolean(2);
 			currentBet += chipBet;
@@ -2345,7 +2461,7 @@ namespace CCasino {
 	}
 		   //������
 	private: System::Void betButtonEven_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 		addToVectors(102, chipBet);
 		setBetBoolean(3);
 		currentBet += chipBet;
@@ -2358,7 +2474,7 @@ namespace CCasino {
 	}
 		   //��������
 	private: System::Void betButtonOdd_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(103, chipBet);
 			setBetBoolean(4);
 			currentBet += chipBet;
@@ -2371,7 +2487,7 @@ namespace CCasino {
 	}
 		   //������ ��������
 	private: System::Void betButtonFirstHalf_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(110, chipBet);
 			setBetBoolean(5);
 			currentBet += chipBet;
@@ -2384,7 +2500,7 @@ namespace CCasino {
 	}
 		   //������ ��������
 	private: System::Void betButtonSecondHalf_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (chipBet + currentBet < userBalance) {
+		if (chipBet + currentBet <= userBalance) {
 			addToVectors(120, chipBet);
 			setBetBoolean(6);
 			currentBet += chipBet;
@@ -2448,11 +2564,6 @@ namespace CCasino {
 			   betButtonBlack->ForeColor = Color::White;
 		   }
 
-		   void playMusic() {
-			   String^ filePath = "audio/BlueMoon.wav";
-			   System::Media::SoundPlayer^ player = gcnew System::Media::SoundPlayer(filePath);
-			   player->PlayLooping();
-		   }
 	private: System::Void menuTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (menuExpand) {
 			flowLayoutPanel1->Width -= 10;
@@ -2500,6 +2611,7 @@ namespace CCasino {
 		coinScreen->userId = userIndex;
 		coinScreen->userBalance = userBalance;
 		coinScreen->otherform = this;
+		coinScreen->isAdmin = isAdmin;
 		player->Stop();
 
 		System::Windows::Forms::DialogResult result = coinScreen->ShowDialog();
@@ -2511,6 +2623,44 @@ namespace CCasino {
 		}
 		this->Show();
 		player->PlayLooping();
+	}
+	void adminNav() {
+		Admin^ adminScreen = gcnew Admin();
+		adminScreen->ShowDialog();
+	}
+	private: System::Void adminIcon_Click(System::Object^ sender, System::EventArgs^ e) {
+		adminNav();
+	}
+	private: System::Void adminButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		adminNav();
+	}
+	void showHelp() {
+		System::Windows::Forms::MessageBox::Show(
+			"Игровой режим - Рулетка\n\n"
+			"Добро пожаловать в игровой режим рулетки! Здесь вы можете испытать свою удачу и насладиться азартом этой классической азартной игры.\n\n"
+			"Правила игры:\n\n"
+			"1. Цель игры - угадать число, на котором остановится стрелка рулетки после вращения колеса.\n\n"
+			"2. В начале игры вам будет предложено сделать ставку на одно или несколько чисел.\n\n"
+			"3. Выбирая числа для ставки, учтите, что у каждого числа есть определенные шансы на победу.\n"
+			"4. После того, как вы сделали свои ставки, нажмите кнопку \"Вращать\", чтобы запустить вращение рулетки.\n\n"
+			"5. После остановки рулетки вы узнаете, выиграли ли вы или нет. Если стрелка указывает на число, на которое вы сделали ставку, вы получите выигрыш в соответствии с коэффициентом выплаты этой ставки.\n\n"
+			"6. Вы можете делать новые ставки после каждого спина рулетки, чтобы повысить свои шансы на победу.\n\n"
+			"Коэффициенты выплат:\n\n"
+			"- Прямая ставка: ставка на одно число (например, 7) - коэффициент выплаты 35:1.\n\n"
+			"- Дюжина: ставка на одну из трех дюжин чисел (1-12, 13-24, 25-36) - коэффициент выплаты 2:1.\n\n"
+			"- Колонна: ставка на одну из трех колонн чисел - коэффициент выплаты 2:1.\n\n"
+			"- Четное/нечетное: ставка на четное или нечетное число - коэффициент выплаты 1:1.\n\n"
+			"- Красное/черное: ставка на красное или черное число - коэффициент выплаты 1:1.\n\n"
+			"Удачи и хорошей игры в рулетку!",
+			"Справка - Игровой режим рулетки",
+			System::Windows::Forms::MessageBoxButtons::OK,
+			System::Windows::Forms::MessageBoxIcon::Information);
+	}
+	private: System::Void helpIcon_Click(System::Object^ sender, System::EventArgs^ e) {
+		showHelp();
+	}
+	private: System::Void helpButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		showHelp();
 	}
 };
 }

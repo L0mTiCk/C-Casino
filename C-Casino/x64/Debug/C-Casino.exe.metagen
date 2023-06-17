@@ -27,11 +27,17 @@ Class CCasino.OrelOrReshka: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
+    Int32 flipCount : Public
     Int32 userBalance : Public
+    Int32 userBet : Public
     Boolean isPlaying : Public
     Boolean menuExpand : Public
     Int32 numberToPass : Public
+    Int32 winNumber : Public
+    Int32 coinBet : Public
+    Boolean isAdmin : Public
     Int32 userId : Public
+    System.Windows.Forms.PictureBox coinPictureBox : Public
     System.Windows.Forms.Form otherform : Public
   Properties:
     Int32 NumberToPass 'get ' : 

@@ -27,13 +27,40 @@ namespace CCasino {
 			//TODO: добавьте код конструктора
 			//
 		}
+		int flipCount;
 		int userBalance;
+		int userBet;
 		bool isPlaying;
 		bool menuExpand;
 		int numberToPass;
+		int winNumber;
+		int coinBet;
+		bool isAdmin;
 	private: System::Windows::Forms::Timer^ menuTimer;
 	public:
 		int userId;
+	public: System::Windows::Forms::PictureBox^ coinPictureBox;
+
+
+	private: System::Windows::Forms::Timer^ flipTimer;
+	private: System::Windows::Forms::Button^ flipButton;
+
+	private: System::Windows::Forms::Label^ winLabel;
+	private: System::Windows::Forms::Button^ orelButton;
+	private: System::Windows::Forms::Button^ reshkaButton;
+
+
+	private: System::Windows::Forms::Label^ enteringLable;
+	private: System::Windows::Forms::Panel^ panel6;
+	private: System::Windows::Forms::Button^ coinButton;
+
+	private: System::Windows::Forms::PictureBox^ coinIcon;
+	private: System::Windows::Forms::Panel^ panel3;
+	private: System::Windows::Forms::Button^ helpButton;
+	private: System::Windows::Forms::PictureBox^ helpIcon;
+
+
+	public:
 		System::Windows::Forms::Form^ otherform;
 		property int NumberToPass {
 			int get() {
@@ -73,11 +100,15 @@ namespace CCasino {
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::Button^ rouletteButton;
 	private: System::Windows::Forms::PictureBox^ rouletteIcon;
-	private: System::Windows::Forms::Panel^ panel3;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::PictureBox^ coinIcon;
+	private: System::Windows::Forms::Panel^ adminPanel;
 
-	private: System::Windows::Forms::Panel^ panel5;
+	private: System::Windows::Forms::Button^ adminButton;
+
+	private: System::Windows::Forms::PictureBox^ adminIcon;
+	private: System::Windows::Forms::Panel^ spacerPanel;
+
+
+
 	private: System::Windows::Forms::Panel^ panel4;
 	private: System::Windows::Forms::Button^ volumeButton;
 	private: System::Windows::Forms::PictureBox^ volumePicture;
@@ -118,14 +149,27 @@ namespace CCasino {
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->rouletteButton = (gcnew System::Windows::Forms::Button());
 			this->rouletteIcon = (gcnew System::Windows::Forms::PictureBox());
-			this->panel3 = (gcnew System::Windows::Forms::Panel());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			this->coinButton = (gcnew System::Windows::Forms::Button());
 			this->coinIcon = (gcnew System::Windows::Forms::PictureBox());
-			this->panel5 = (gcnew System::Windows::Forms::Panel());
+			this->adminPanel = (gcnew System::Windows::Forms::Panel());
+			this->adminButton = (gcnew System::Windows::Forms::Button());
+			this->adminIcon = (gcnew System::Windows::Forms::PictureBox());
+			this->spacerPanel = (gcnew System::Windows::Forms::Panel());
 			this->panel4 = (gcnew System::Windows::Forms::Panel());
 			this->volumeButton = (gcnew System::Windows::Forms::Button());
 			this->volumePicture = (gcnew System::Windows::Forms::PictureBox());
+			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->helpButton = (gcnew System::Windows::Forms::Button());
+			this->helpIcon = (gcnew System::Windows::Forms::PictureBox());
 			this->menuTimer = (gcnew System::Windows::Forms::Timer(this->components));
+			this->coinPictureBox = (gcnew System::Windows::Forms::PictureBox());
+			this->flipTimer = (gcnew System::Windows::Forms::Timer(this->components));
+			this->flipButton = (gcnew System::Windows::Forms::Button());
+			this->winLabel = (gcnew System::Windows::Forms::Label());
+			this->orelButton = (gcnew System::Windows::Forms::Button());
+			this->reshkaButton = (gcnew System::Windows::Forms::Button());
+			this->enteringLable = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->greenChipPictureBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->yellowChipPictureBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->blueChipPictureBox))->BeginInit();
@@ -135,10 +179,15 @@ namespace CCasino {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuIcon))->BeginInit();
 			this->panel2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rouletteIcon))->BeginInit();
-			this->panel3->SuspendLayout();
+			this->panel6->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->coinIcon))->BeginInit();
+			this->adminPanel->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->adminIcon))->BeginInit();
 			this->panel4->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->volumePicture))->BeginInit();
+			this->panel3->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->helpIcon))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->coinPictureBox))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// exitButton
@@ -281,6 +330,7 @@ namespace CCasino {
 			this->blueChipPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->blueChipPictureBox->TabIndex = 68;
 			this->blueChipPictureBox->TabStop = false;
+			this->blueChipPictureBox->Click += gcnew System::EventHandler(this, &OrelOrReshka::blueChipPictureBox_Click);
 			// 
 			// redChipPictureBox
 			// 
@@ -294,6 +344,7 @@ namespace CCasino {
 			this->redChipPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->redChipPictureBox->TabIndex = 67;
 			this->redChipPictureBox->TabStop = false;
+			this->redChipPictureBox->Click += gcnew System::EventHandler(this, &OrelOrReshka::redChipPictureBox_Click);
 			// 
 			// userBalanceText
 			// 
@@ -325,13 +376,16 @@ namespace CCasino {
 			// 
 			// flowLayoutPanel1
 			// 
-			this->flowLayoutPanel1->BackColor = System::Drawing::Color::ForestGreen;
+			this->flowLayoutPanel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->flowLayoutPanel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"flowLayoutPanel1.BackgroundImage")));
 			this->flowLayoutPanel1->Controls->Add(this->panel1);
 			this->flowLayoutPanel1->Controls->Add(this->panel2);
-			this->flowLayoutPanel1->Controls->Add(this->panel3);
-			this->flowLayoutPanel1->Controls->Add(this->panel5);
+			this->flowLayoutPanel1->Controls->Add(this->panel6);
+			this->flowLayoutPanel1->Controls->Add(this->adminPanel);
+			this->flowLayoutPanel1->Controls->Add(this->spacerPanel);
 			this->flowLayoutPanel1->Controls->Add(this->panel4);
+			this->flowLayoutPanel1->Controls->Add(this->panel3);
 			this->flowLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Left;
 			this->flowLayoutPanel1->Location = System::Drawing::Point(0, 0);
 			this->flowLayoutPanel1->MaximumSize = System::Drawing::Size(232, 0);
@@ -374,6 +428,7 @@ namespace CCasino {
 			// rouletteButton
 			// 
 			this->rouletteButton->BackColor = System::Drawing::Color::Transparent;
+			this->rouletteButton->FlatAppearance->BorderSize = 0;
 			this->rouletteButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->rouletteButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
@@ -398,29 +453,30 @@ namespace CCasino {
 			this->rouletteIcon->TabStop = false;
 			this->rouletteIcon->Click += gcnew System::EventHandler(this, &OrelOrReshka::rouletteIcon_Click);
 			// 
-			// panel3
+			// panel6
 			// 
-			this->panel3->BackColor = System::Drawing::Color::Transparent;
-			this->panel3->Controls->Add(this->button1);
-			this->panel3->Controls->Add(this->coinIcon);
-			this->panel3->Location = System::Drawing::Point(3, 169);
-			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(229, 54);
-			this->panel3->TabIndex = 68;
+			this->panel6->BackColor = System::Drawing::Color::Transparent;
+			this->panel6->Controls->Add(this->coinButton);
+			this->panel6->Controls->Add(this->coinIcon);
+			this->panel6->Location = System::Drawing::Point(3, 169);
+			this->panel6->Name = L"panel6";
+			this->panel6->Size = System::Drawing::Size(229, 54);
+			this->panel6->TabIndex = 86;
 			// 
-			// button1
+			// coinButton
 			// 
-			this->button1->BackColor = System::Drawing::Color::Transparent;
-			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->coinButton->BackColor = System::Drawing::Color::Transparent;
+			this->coinButton->FlatAppearance->BorderSize = 0;
+			this->coinButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->coinButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button1->ForeColor = System::Drawing::Color::ForestGreen;
-			this->button1->Location = System::Drawing::Point(60, 0);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(166, 54);
-			this->button1->TabIndex = 68;
-			this->button1->Text = L"Монетка";
-			this->button1->UseVisualStyleBackColor = false;
+			this->coinButton->ForeColor = System::Drawing::Color::ForestGreen;
+			this->coinButton->Location = System::Drawing::Point(60, 0);
+			this->coinButton->Name = L"coinButton";
+			this->coinButton->Size = System::Drawing::Size(166, 54);
+			this->coinButton->TabIndex = 68;
+			this->coinButton->Text = L"Монетка";
+			this->coinButton->UseVisualStyleBackColor = false;
 			// 
 			// coinIcon
 			// 
@@ -433,20 +489,58 @@ namespace CCasino {
 			this->coinIcon->TabIndex = 68;
 			this->coinIcon->TabStop = false;
 			// 
-			// panel5
+			// adminPanel
 			// 
-			this->panel5->BackColor = System::Drawing::Color::Transparent;
-			this->panel5->Location = System::Drawing::Point(3, 229);
-			this->panel5->Name = L"panel5";
-			this->panel5->Size = System::Drawing::Size(226, 267);
-			this->panel5->TabIndex = 69;
+			this->adminPanel->BackColor = System::Drawing::Color::Transparent;
+			this->adminPanel->Controls->Add(this->adminButton);
+			this->adminPanel->Controls->Add(this->adminIcon);
+			this->adminPanel->Location = System::Drawing::Point(3, 229);
+			this->adminPanel->Name = L"adminPanel";
+			this->adminPanel->Size = System::Drawing::Size(229, 54);
+			this->adminPanel->TabIndex = 68;
+			// 
+			// adminButton
+			// 
+			this->adminButton->BackColor = System::Drawing::Color::Transparent;
+			this->adminButton->FlatAppearance->BorderSize = 0;
+			this->adminButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->adminButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->adminButton->ForeColor = System::Drawing::Color::White;
+			this->adminButton->Location = System::Drawing::Point(60, 0);
+			this->adminButton->Name = L"adminButton";
+			this->adminButton->Size = System::Drawing::Size(166, 54);
+			this->adminButton->TabIndex = 68;
+			this->adminButton->Text = L"Администратор";
+			this->adminButton->UseVisualStyleBackColor = false;
+			this->adminButton->Click += gcnew System::EventHandler(this, &OrelOrReshka::adminButton_Click);
+			// 
+			// adminIcon
+			// 
+			this->adminIcon->BackColor = System::Drawing::Color::Transparent;
+			this->adminIcon->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"adminIcon.BackgroundImage")));
+			this->adminIcon->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->adminIcon->Location = System::Drawing::Point(3, 0);
+			this->adminIcon->Name = L"adminIcon";
+			this->adminIcon->Size = System::Drawing::Size(54, 54);
+			this->adminIcon->TabIndex = 68;
+			this->adminIcon->TabStop = false;
+			this->adminIcon->Click += gcnew System::EventHandler(this, &OrelOrReshka::adminIcon_Click);
+			// 
+			// spacerPanel
+			// 
+			this->spacerPanel->BackColor = System::Drawing::Color::Transparent;
+			this->spacerPanel->Location = System::Drawing::Point(3, 289);
+			this->spacerPanel->Name = L"spacerPanel";
+			this->spacerPanel->Size = System::Drawing::Size(226, 193);
+			this->spacerPanel->TabIndex = 69;
 			// 
 			// panel4
 			// 
 			this->panel4->BackColor = System::Drawing::Color::Transparent;
 			this->panel4->Controls->Add(this->volumeButton);
 			this->panel4->Controls->Add(this->volumePicture);
-			this->panel4->Location = System::Drawing::Point(3, 502);
+			this->panel4->Location = System::Drawing::Point(3, 488);
 			this->panel4->Name = L"panel4";
 			this->panel4->Size = System::Drawing::Size(229, 54);
 			this->panel4->TabIndex = 69;
@@ -454,6 +548,7 @@ namespace CCasino {
 			// volumeButton
 			// 
 			this->volumeButton->BackColor = System::Drawing::Color::Transparent;
+			this->volumeButton->FlatAppearance->BorderSize = 0;
 			this->volumeButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->volumeButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
@@ -464,6 +559,7 @@ namespace CCasino {
 			this->volumeButton->TabIndex = 68;
 			this->volumeButton->Text = L"Звук";
 			this->volumeButton->UseVisualStyleBackColor = false;
+			this->volumeButton->Click += gcnew System::EventHandler(this, &OrelOrReshka::volumeButton_Click);
 			// 
 			// volumePicture
 			// 
@@ -475,11 +571,142 @@ namespace CCasino {
 			this->volumePicture->Size = System::Drawing::Size(54, 54);
 			this->volumePicture->TabIndex = 68;
 			this->volumePicture->TabStop = false;
+			this->volumePicture->Click += gcnew System::EventHandler(this, &OrelOrReshka::volumePicture_Click);
+			// 
+			// panel3
+			// 
+			this->panel3->BackColor = System::Drawing::Color::Transparent;
+			this->panel3->Controls->Add(this->helpButton);
+			this->panel3->Controls->Add(this->helpIcon);
+			this->panel3->Location = System::Drawing::Point(3, 548);
+			this->panel3->Name = L"panel3";
+			this->panel3->Size = System::Drawing::Size(229, 54);
+			this->panel3->TabIndex = 70;
+			// 
+			// helpButton
+			// 
+			this->helpButton->BackColor = System::Drawing::Color::Transparent;
+			this->helpButton->FlatAppearance->BorderSize = 0;
+			this->helpButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->helpButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->helpButton->ForeColor = System::Drawing::Color::White;
+			this->helpButton->Location = System::Drawing::Point(63, 0);
+			this->helpButton->Name = L"helpButton";
+			this->helpButton->Size = System::Drawing::Size(166, 54);
+			this->helpButton->TabIndex = 68;
+			this->helpButton->Text = L"Справка";
+			this->helpButton->UseVisualStyleBackColor = false;
+			this->helpButton->Click += gcnew System::EventHandler(this, &OrelOrReshka::helpButton_Click);
+			// 
+			// helpIcon
+			// 
+			this->helpIcon->BackColor = System::Drawing::Color::Transparent;
+			this->helpIcon->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"helpIcon.BackgroundImage")));
+			this->helpIcon->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->helpIcon->Location = System::Drawing::Point(3, 0);
+			this->helpIcon->Name = L"helpIcon";
+			this->helpIcon->Size = System::Drawing::Size(54, 54);
+			this->helpIcon->TabIndex = 68;
+			this->helpIcon->TabStop = false;
+			this->helpIcon->Click += gcnew System::EventHandler(this, &OrelOrReshka::helpIcon_Click);
 			// 
 			// menuTimer
 			// 
 			this->menuTimer->Interval = 10;
 			this->menuTimer->Tick += gcnew System::EventHandler(this, &OrelOrReshka::menuTimer_Tick);
+			// 
+			// coinPictureBox
+			// 
+			this->coinPictureBox->BackColor = System::Drawing::Color::Transparent;
+			this->coinPictureBox->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"coinPictureBox.BackgroundImage")));
+			this->coinPictureBox->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->coinPictureBox->Location = System::Drawing::Point(366, 111);
+			this->coinPictureBox->Margin = System::Windows::Forms::Padding(2);
+			this->coinPictureBox->MaximumSize = System::Drawing::Size(283, 306);
+			this->coinPictureBox->Name = L"coinPictureBox";
+			this->coinPictureBox->Size = System::Drawing::Size(280, 280);
+			this->coinPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->coinPictureBox->TabIndex = 80;
+			this->coinPictureBox->TabStop = false;
+			// 
+			// flipTimer
+			// 
+			this->flipTimer->Interval = 30;
+			this->flipTimer->Tick += gcnew System::EventHandler(this, &OrelOrReshka::flipTimer_Tick);
+			// 
+			// flipButton
+			// 
+			this->flipButton->BackColor = System::Drawing::Color::Transparent;
+			this->flipButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->flipButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->flipButton->ForeColor = System::Drawing::Color::White;
+			this->flipButton->Location = System::Drawing::Point(734, 349);
+			this->flipButton->Name = L"flipButton";
+			this->flipButton->Size = System::Drawing::Size(227, 42);
+			this->flipButton->TabIndex = 81;
+			this->flipButton->Text = L"Подбросить";
+			this->flipButton->UseVisualStyleBackColor = false;
+			this->flipButton->Click += gcnew System::EventHandler(this, &OrelOrReshka::button2_Click);
+			// 
+			// winLabel
+			// 
+			this->winLabel->BackColor = System::Drawing::Color::Transparent;
+			this->winLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->winLabel->ForeColor = System::Drawing::Color::White;
+			this->winLabel->Location = System::Drawing::Point(234, 426);
+			this->winLabel->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->winLabel->Name = L"winLabel";
+			this->winLabel->Size = System::Drawing::Size(556, 44);
+			this->winLabel->TabIndex = 82;
+			this->winLabel->Text = L"Вы проиграли";
+			this->winLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->winLabel->Visible = false;
+			// 
+			// orelButton
+			// 
+			this->orelButton->BackColor = System::Drawing::Color::Transparent;
+			this->orelButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->orelButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->orelButton->ForeColor = System::Drawing::Color::White;
+			this->orelButton->Location = System::Drawing::Point(734, 247);
+			this->orelButton->Name = L"orelButton";
+			this->orelButton->Size = System::Drawing::Size(115, 41);
+			this->orelButton->TabIndex = 83;
+			this->orelButton->Text = L"Орел";
+			this->orelButton->UseVisualStyleBackColor = false;
+			this->orelButton->Click += gcnew System::EventHandler(this, &OrelOrReshka::orelButton_Click);
+			// 
+			// reshkaButton
+			// 
+			this->reshkaButton->BackColor = System::Drawing::Color::Transparent;
+			this->reshkaButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->reshkaButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->reshkaButton->ForeColor = System::Drawing::Color::White;
+			this->reshkaButton->Location = System::Drawing::Point(846, 247);
+			this->reshkaButton->Name = L"reshkaButton";
+			this->reshkaButton->Size = System::Drawing::Size(115, 41);
+			this->reshkaButton->TabIndex = 84;
+			this->reshkaButton->Text = L"Решка";
+			this->reshkaButton->UseVisualStyleBackColor = false;
+			this->reshkaButton->Click += gcnew System::EventHandler(this, &OrelOrReshka::reshkaButton_Click);
+			// 
+			// enteringLable
+			// 
+			this->enteringLable->AutoSize = true;
+			this->enteringLable->BackColor = System::Drawing::Color::Transparent;
+			this->enteringLable->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->enteringLable->ForeColor = System::Drawing::Color::White;
+			this->enteringLable->Location = System::Drawing::Point(696, 187);
+			this->enteringLable->Name = L"enteringLable";
+			this->enteringLable->Size = System::Drawing::Size(291, 26);
+			this->enteringLable->TabIndex = 85;
+			this->enteringLable->Text = L"Выберите сторону монетки";
 			// 
 			// OrelOrReshka
 			// 
@@ -488,6 +715,12 @@ namespace CCasino {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1025, 613);
+			this->Controls->Add(this->enteringLable);
+			this->Controls->Add(this->reshkaButton);
+			this->Controls->Add(this->orelButton);
+			this->Controls->Add(this->winLabel);
+			this->Controls->Add(this->flipButton);
+			this->Controls->Add(this->coinPictureBox);
 			this->Controls->Add(this->flowLayoutPanel1);
 			this->Controls->Add(this->userBalanceText);
 			this->Controls->Add(this->balanceTextLabel);
@@ -518,16 +751,27 @@ namespace CCasino {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuIcon))->EndInit();
 			this->panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->rouletteIcon))->EndInit();
-			this->panel3->ResumeLayout(false);
+			this->panel6->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->coinIcon))->EndInit();
+			this->adminPanel->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->adminIcon))->EndInit();
 			this->panel4->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->volumePicture))->EndInit();
+			this->panel3->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->helpIcon))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->coinPictureBox))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void OrelOrReshka_Load(System::Object^ sender, System::EventArgs^ e) {
+		String^ filePath = "audio/TheWay.wav";
+		System::Media::SoundPlayer^ player = gcnew System::Media::SoundPlayer(filePath);
+private: System::Void OrelOrReshka_Load(System::Object^ sender, System::EventArgs^ e) {
+		adminPanel->Visible = isAdmin;
+		if (!isAdmin) {
+			spacerPanel->Size = System::Drawing::Size(spacerPanel->Size.Width, 260);
+		}
 		this->BackgroundImage = Image::FromFile("img/greenBackground.jpg");
 		coinIcon->BackgroundImage = Image::FromFile("img/coinIcon.png");
 		rouletteIcon->BackgroundImage = Image::FromFile("img/rouletteIcon.png");
@@ -537,16 +781,22 @@ namespace CCasino {
 		yellowChipPictureBox->BackgroundImage = Image::FromFile("img/yellowChip.png");
 		greenChipPictureBox->BackgroundImage = Image::FromFile("img/greenChip.png");
 		blueChipPictureBox->BackgroundImage = Image::FromFile("img/blueChip.png");
+		helpIcon->BackgroundImage = Image::FromFile("img/helpIcon.png");
 		userBalanceText->Text = "" + userBalance;
 		currentBetLabel->Text = "" + 0;
+		player->PlayLooping();
 		isPlaying = true;
+		coinBet = 2;
+		userBet = 0;
+
 	}
+
 	private: System::Void exitButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		saveBalance(userBalance, userId);
 		Application::Exit();
 	}
 	void rouletteNav() {
-		numberToPass = 70000;
+		numberToPass = userBalance;
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
@@ -573,10 +823,155 @@ namespace CCasino {
 		}
 	}
 	private: void coinFlip() {
-
+		//generate random num from 0 to 1
+		if (coinBet != 2 && userBet > 0 && userBet <= userBalance) {
+			winLabel->Visible = false;
+			winNumber = rand() % 2;
+			flipTimer->Start();
+		}
+		else
+			MessageBox::Show("Выберите ставку");
 	}
 	private: System::Void menuIcon_Click(System::Object^ sender, System::EventArgs^ e) {
 		menuTimer->Start();
+	}
+	private: System::Void flipTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+		if (flipCount < 13) {
+			if(flipCount % 2 == 1)
+				coinPictureBox->BackgroundImage = Image::FromFile("img/orelDefault.png");
+			else
+				coinPictureBox->BackgroundImage = Image::FromFile("img/reshkaDefault.png");
+			flipCount++;
+			flipTimer->Interval = flipCount * 30;
+			GC::Collect();
+		}
+		else
+		{
+			if (winNumber) {
+				coinPictureBox->BackgroundImage = Image::FromFile("img/orelWin.png");
+			}
+			else {
+				coinPictureBox->BackgroundImage = Image::FromFile("img/reshkaWin.png");
+			}
+
+			if (winNumber == coinBet) {
+				winLabel->Visible = true;
+				winLabel->Text = "Вы выиграли";
+				userBalance += userBet;
+			}
+			else {
+				winLabel->Visible = true;
+				winLabel->Text = "Вы проиграли";
+				userBalance -= userBet;
+			}
+			updateBalance();
+			userBet = 0;
+			updateCurrentBet();
+			flipTimer->Stop();
+			flipCount = 0;
+			GC::Collect();
+			coinBet = 2;
+		}
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		coinFlip();
+		orelButton->ForeColor = Color::White;
+		reshkaButton->ForeColor = Color::White;
+	}
+	private: System::Void orelButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		coinBet = 1;
+		reshkaButton->ForeColor = Color::White;
+		orelButton->ForeColor = Color::Silver;
+	}
+	private: System::Void reshkaButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		coinBet = 0;
+		orelButton->ForeColor = Color::White;
+		reshkaButton->ForeColor = Color::Silver;
+	}
+	private: System::Void redChipPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
+		userBet += 10;
+		updateCurrentBet();
+		redChipPictureBox->BackgroundImage = Image::FromFile("img/redChipPressed.png");
+		Sleep(200);
+		redChipPictureBox->BackgroundImage = Image::FromFile("img/redChip.png");
+	}
+	private: System::Void blueChipPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
+		userBet += 50;
+		updateCurrentBet();
+		blueChipPictureBox->BackgroundImage = Image::FromFile("img/blueChipPressed.png");
+		Sleep(200);
+		blueChipPictureBox->BackgroundImage = Image::FromFile("img/blueChip.png");
+	}
+	private: System::Void yellowChipPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
+		userBet += 100;
+		updateCurrentBet();
+		yellowChipPictureBox->BackgroundImage = Image::FromFile("img/yellowChipPressed.png");
+		Sleep(200);
+		yellowChipPictureBox->BackgroundImage = Image::FromFile("img/yellowChip.png");
+	}
+	private: System::Void greenChipPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
+		userBet += 500;
+		updateCurrentBet();
+		greenChipPictureBox->BackgroundImage = Image::FromFile("img/greenChipPressed.png");
+		Sleep(200);
+		greenChipPictureBox->BackgroundImage = Image::FromFile("img/greenChip.png");
+	}
+
+	void updateCurrentBet() {
+		currentBetLabel->Text = "" + userBet;
+	}
+	void updateBalance() {
+		userBalanceText->Text = "" + userBalance;
+	}
+	void playerControl() {
+		if (isPlaying) {
+			player->Stop();
+			isPlaying = false;
+		}
+		else {
+			player->PlayLooping();
+			isPlaying = true;
+		}
+	}
+	private: System::Void volumePicture_Click(System::Object^ sender, System::EventArgs^ e) {
+		playerControl();
+	}
+	private: System::Void volumeButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		playerControl();
+	}
+
+	void adminNav() {
+		Admin^ adminScreen = gcnew Admin();
+		adminScreen->ShowDialog();
+	}
+	private: System::Void adminIcon_Click(System::Object^ sender, System::EventArgs^ e) {
+		adminNav();
+	}
+	private: System::Void adminButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		adminNav();
+	}
+	void showHelp() {
+		System::Windows::Forms::MessageBox::Show(
+			"Игровой режим - Орел/Решка\n\n"
+			"Добро пожаловать в игровой режим Орел/Решка! Здесь вы можете проверить свою удачу, угадывая выпадение орла или решки.\n\n"
+			"Правила игры:\n\n"
+			"1. Вам будет предложено сделать выбор между орлом и решкой.\n\n"
+			"2. Выберите ставку, нажав на фишки снизу.\n\n"
+			"3. Выберите свой вариант, нажав на кнопку 'Орел' или 'Решка'.\n\n"
+			"4. После того, как вы сделали свой выбор, нажмите кнопку 'Подбросить' или 'Старт', чтобы бросить монетку.\n\n"
+			"5. Монетка будет подброшена, и вы увидите результат - орел или решка.\n\n"
+			"6. Если ваш выбор совпал с результатом, вы победите!\n\n"
+			"7. Вы можете продолжать игру, делая новые выборы после каждого подбрасывания монетки.\n\n"
+			"Удачи и хорошей игры в Орел/Решка!",
+			"Справка - Игровой режим Орел/Решка",
+			System::Windows::Forms::MessageBoxButtons::OK,
+			System::Windows::Forms::MessageBoxIcon::Information);
+	}
+	private: System::Void helpIcon_Click(System::Object^ sender, System::EventArgs^ e) {
+		showHelp();
+	}
+	private: System::Void helpButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		showHelp();
 	}
 };
 }

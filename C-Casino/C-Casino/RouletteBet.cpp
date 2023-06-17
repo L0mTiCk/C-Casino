@@ -86,7 +86,6 @@ int checkWin(int winNum) {
 	winMultipl += totalWinSum();
 
 	return betValues.at(winIndex) * (winMultipl - 1);
-	//TODO: не работает, мб надо возвращать значения структур к изначальным после прокрутки
 }
 
 /*
